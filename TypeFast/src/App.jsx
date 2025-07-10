@@ -23,27 +23,30 @@ function App() {
     useEffect(() => {
   const ua = navigator.userAgent;
 
-  // Detect mobile phone only (exclude tablets)
+  // Detect mobile phone user agent (simple)
   const isMobilePhone = /iPhone|Android.*Mobile|Windows Phone/i.test(ua);
 
-  // Detect desktop mode on mobile phone: mobile phone UA but with desktop OS strings
-  const isDesktopModeOnMobile =
-    isMobilePhone && /Windows NT|Macintosh|Linux/i.test(ua);
+  // Detect desktop OS keywords in user agent
+  const hasDesktopOS = /Windows NT|Macintosh|Linux/i.test(ua);
 
   if (!isMobilePhone) {
-    // Not a mobile phone (desktop or tablet), show site normally
+    // Desktop device: always show
     setCanShowApp(true);
     setDeviceMessage("");
-  } else if (isDesktopModeOnMobile) {
-    // Mobile phone but desktop mode enabled — hide site
-    setCanShowApp(false);
-    setDeviceMessage("Please switch back to mobile view for the best experience.");
   } else {
-    // Mobile phone in normal mobile mode — show site
-    setCanShowApp(true);
-    setDeviceMessage("");
+    // Mobile phone
+    if (hasDesktopOS) {
+      // Mobile phone with desktop UA (desktop mode)
+      setCanShowApp(false);
+      setDeviceMessage("Please switch back to mobile view for the best experience.");
+    } else {
+      // Mobile phone in normal mobile mode
+      setCanShowApp(true);
+      setDeviceMessage("");
+    }
   }
 }, []);
+
 
 
     const handleSettings = () => {
