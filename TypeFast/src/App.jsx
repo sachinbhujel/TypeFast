@@ -17,38 +17,6 @@ function App() {
     const [fontName, setFontName] = useState("sans-serif");
     const [showWebsiteOpen, setShowWebsiteOpen] = useState(true);
 
-    const [canShowApp, setCanShowApp] = useState(null);
-    const [deviceMessage, setDeviceMessage] = useState("");
-
-    useEffect(() => {
-  const ua = navigator.userAgent;
-
-  // Detect mobile phone user agent (simple)
-  const isMobilePhone = /iPhone|Android.*Mobile|Windows Phone/i.test(ua);
-
-  // Detect desktop OS keywords in user agent
-  const hasDesktopOS = /Windows NT|Macintosh|Linux/i.test(ua);
-
-  if (!isMobilePhone) {
-    // Desktop device: always show
-    setCanShowApp(true);
-    setDeviceMessage("");
-  } else {
-    // Mobile phone
-    if (hasDesktopOS) {
-      // Mobile phone with desktop UA (desktop mode)
-      setCanShowApp(false);
-      setDeviceMessage("Please switch back to mobile view for the best experience.");
-    } else {
-      // Mobile phone in normal mobile mode
-      setCanShowApp(true);
-      setDeviceMessage("");
-    }
-  }
-}, []);
-
-
-
     const handleSettings = () => {
         setIsSettingsOpen(true);
     };
@@ -142,21 +110,6 @@ function App() {
 
         return () => clearTimeout(timer);
     }, []);
-
-    if (canShowApp === false) {
-    return (
-      <div
-        style={{
-          padding: "2rem",
-          textAlign: "center",
-          fontSize: "1.2rem",
-          color: "#555",
-        }}
-      >
-        {deviceMessage}
-      </div>
-    );
-  }
 
     return (
         <>
