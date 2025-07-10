@@ -18,7 +18,7 @@
 
 ## 🖼️ Demo
 
-> Live Site: [https://your-deployed-url.com](https://maketypefast.netlify.app)  
+> Live Site: [https://maketypefast.netlify.app](https://maketypefast.netlify.app)  
 
 ---
 
