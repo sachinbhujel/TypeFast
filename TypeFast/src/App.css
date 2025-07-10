@@ -366,7 +366,7 @@ body::-webkit-scrollbar {
     color: #d1d5db;
     display: flex;
     justify-content: right;
-    padding: 15px;
+    padding: 25px;
 }
 
 .center-text {

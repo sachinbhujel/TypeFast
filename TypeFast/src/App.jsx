@@ -17,6 +17,35 @@ function App() {
     const [fontName, setFontName] = useState("sans-serif");
     const [showWebsiteOpen, setShowWebsiteOpen] = useState(true);
 
+    const [canShowApp, setCanShowApp] = useState(null);
+    const [deviceMessage, setDeviceMessage] = useState("");
+
+    useEffect(() => {
+  const ua = navigator.userAgent;
+
+  // Detect mobile phone only (exclude tablets)
+  const isMobilePhone = /iPhone|Android.*Mobile|Windows Phone/i.test(ua);
+
+  // Detect desktop mode on mobile phone: mobile phone UA but with desktop OS strings
+  const isDesktopModeOnMobile =
+    isMobilePhone && /Windows NT|Macintosh|Linux/i.test(ua);
+
+  if (!isMobilePhone) {
+    // Not a mobile phone (desktop or tablet), show site normally
+    setCanShowApp(true);
+    setDeviceMessage("");
+  } else if (isDesktopModeOnMobile) {
+    // Mobile phone but desktop mode enabled — hide site
+    setCanShowApp(false);
+    setDeviceMessage("Please switch back to mobile view for the best experience.");
+  } else {
+    // Mobile phone in normal mobile mode — show site
+    setCanShowApp(true);
+    setDeviceMessage("");
+  }
+}, []);
+
+
     const handleSettings = () => {
         setIsSettingsOpen(true);
     };
@@ -104,20 +133,33 @@ function App() {
     };
 
     useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowWebsiteOpen(false);
-    }, 1000); 
+        const timer = setTimeout(() => {
+            setShowWebsiteOpen(false);
+        }, 1000);
 
-    return () => clearTimeout(timer);
-  }, []);
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (canShowApp === false) {
+    return (
+      <div
+        style={{
+          padding: "2rem",
+          textAlign: "center",
+          fontSize: "1.2rem",
+          color: "#555",
+        }}
+      >
+        {deviceMessage}
+      </div>
+    );
+  }
 
     return (
         <>
-            {
-                showWebsiteOpen ? (
-                    <WebsiteOpen />
-                ) : (
-                    isSettingsOpen ? (
+            {showWebsiteOpen ? (
+                <WebsiteOpen />
+            ) : isSettingsOpen ? (
                 <Settings
                     setIsSettingsOpen={setIsSettingsOpen}
                     setFontName={setFontName}
@@ -243,9 +285,7 @@ function App() {
                         </footer>
                     </div>
                 </div>
-            )
-                )
-            }
+            )}
         </>
     );
 }
