@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Settings from "./Settings";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,11 @@ function App() {
     const [startTime, setStartTime] = useState(null);
     const [timeTaken, setTimeTaken] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+    const handleSettings = () => {
+        setIsSettingsOpen(true);
+    };
 
     const [wordLimit, setWordLimit] = useState(null);
 
@@ -60,7 +66,9 @@ function App() {
 
     const getHighlighted = () => {
         const targetWords = targetText.split(" ");
-        const slicedText = wordLimit ? targetWords.slice(0, wordLimit).join(" ") : targetText;
+        const slicedText = wordLimit
+            ? targetWords.slice(0, wordLimit).join(" ")
+            : targetText;
 
         const inputChars = word.split("");
         const targetChars = slicedText.split("");
@@ -92,90 +100,104 @@ function App() {
 
     return (
         <>
-            <div className="app">
-                <div className="navbar">
-                    <div className="navbar-left">
-                        <svg
-                            viewBox="0 0 48 48"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="logo"
+            {isSettingsOpen ? (
+                <Settings setIsSettingsOpen={setIsSettingsOpen}/>
+            ) : (
+                <div className="app">
+                    <div className="navbar">
+                        <div className="navbar-left">
+                            <svg
+                                viewBox="0 0 48 48"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="logo"
+                            >
+                                <path
+                                    d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"
+                                    fill="currentColor"
+                                ></path>
+                            </svg>
+                            <h3>TypeFast</h3>
+                        </div>
+                        <div className="navbar-right">
+                            <Link to="/about">About</Link>
+                            <Link to="/practice">Practice</Link>
+                            <Link to="/leaderboard">Leaderboard</Link>
+                            <span
+                                className="material-symbols-outlined"
+                                onClick={handleSettings}
+                            >
+                                settings
+                            </span>
+                        </div>
+                        <div className="menu-div">
+                            <span className="material-symbols-outlined">
+                                menu
+                            </span>
+                        </div>
+                    </div>
+                    <div className="typing-test">
+                        <h2>Typing Speed Test</h2>
+                        <p className="typing-instructions">
+                            Type the following text as quickly and accurately as
+                            possible. Your typing speed and accuracy will be
+                            calculated in real-time.
+                        </p>
+                        <div className="text-length">
+                            {words_count.map((len, index) => {
+                                return (
+                                    <p
+                                        key={index}
+                                        onClick={() =>
+                                            setWordLimit(Number(len))
+                                        }
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        {len} /
+                                    </p>
+                                );
+                            })}
+                        </div>
+                        <p className="typing-text">{getHighlighted()}</p>
+
+                        <textarea
+                            className="typing-input"
+                            placeholder="Start typing here..."
+                            value={word}
+                            onChange={handleValue}
+                            disabled={isFinished}
+                            onPaste={(e) => e.preventDefault()}
+                        ></textarea>
+
+                        <div className="typing-stats">
+                            <div className="stat-box">
+                                <p className="stat-label">Time (sec)</p>
+                                <p className="stat-value">{timeTaken}</p>
+                            </div>
+                            <div className="stat-box">
+                                <p className="stat-label">WPM</p>
+                                <p className="stat-value">{wpm}</p>
+                            </div>
+                            <div className="stat-box">
+                                <p className="stat-label">Accuracy (%)</p>
+                                <p className="stat-value">{accuracy}</p>
+                            </div>
+                        </div>
+
+                        <button
+                            className="restart-button"
+                            onClick={handleRestart}
                         >
-                            <path
-                                d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"
-                                fill="currentColor"
-                            ></path>
-                        </svg>
-                        <h3>TypeFast</h3>
-                    </div>
-                    <div className="navbar-right">
-                        <Link to="/about">About</Link>
-                        <Link to="/practice">Practice</Link>
-                        <Link to="/leaderboard">Leaderboard</Link>
-                        <span className="material-symbols-outlined">
-                            settings
-                        </span>
-                    </div>
-                    <div className="menu-div">
-                        <span className="material-symbols-outlined">menu</span>
+                            Restart
+                        </button>
+                        <footer className="footer">
+                            <div className="footer-content">
+                                <p>Made with ❤️ by the TypeFast Team</p>
+                            </div>
+                        </footer>
                     </div>
                 </div>
-                <div className="typing-test">
-                    <h2>Typing Speed Test</h2>
-                    <p className="typing-instructions">
-                        Type the following text as quickly and accurately as
-                        possible. Your typing speed and accuracy will be
-                        calculated in real-time.
-                    </p>
-                    <div className="text-length">
-                        {words_count.map((len, index) => {
-                            return (
-                                <p
-                                    key={index}
-                                    onClick={() => setWordLimit(Number(len))}
-                                    style={{ cursor: "pointer" }}
-                                >
-                                    {len} /
-                                </p>
-                            );
-                        })}
-                    </div>
-                    <p className="typing-text">{getHighlighted()}</p>
-
-                    <textarea
-                        className="typing-input"
-                        placeholder="Start typing here..."
-                        value={word}
-                        onChange={handleValue}
-                        disabled={isFinished}
-                        onPaste={(e) => e.preventDefault()}
-                    ></textarea>
-
-                    <div className="typing-stats">
-                        <div className="stat-box">
-                            <p className="stat-label">Time (sec)</p>
-                            <p className="stat-value">{timeTaken}</p>
-                        </div>
-                        <div className="stat-box">
-                            <p className="stat-label">WPM</p>
-                            <p className="stat-value">{wpm}</p>
-                        </div>
-                        <div className="stat-box">
-                            <p className="stat-label">Accuracy (%)</p>
-                            <p className="stat-value">{accuracy}</p>
-                        </div>
-                    </div>
-
-                    <button className="restart-button" onClick={handleRestart}>
-                        Restart
-                    </button>
-                    <footer className="footer">
-                        <div className="footer-content">
-                            <p>Made with ❤️ by the TypeFast Team</p>
-                        </div>
-                    </footer>
-                </div>
-            </div>
+            )}
         </>
     );
 }
