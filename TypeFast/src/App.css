@@ -1,346 +1,365 @@
-body{
-  height: 100dvh;
+body {
+    height: 100dvh;
 }
 
-body::-webkit-scrollbar{
-  display: none;
+body::-webkit-scrollbar {
+    display: none;
 }
 
-.navbar{
-  margin-top: -10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #111827;
+.navbar {
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #111827;
 }
 
-.logo{
-  width: 20px;
+.logo {
+    width: 20px;
 }
 
-.navbar-left{
-  display: flex;
-  gap: 9px;
+.navbar-left {
+    display: flex;
+    gap: 9px;
 }
 
-.navbar-left h3{
-  font-size: 18px;
-  font-family: sans-serif;
+.navbar-left h3 {
+    font-size: 18px;
+    font-family: sans-serif;
 }
 
-.navbar-right{
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.navbar-right a{
-  text-decoration: none;
-  color: black;
-  font-family: sans-serif;
-  font-size: 14px;
+.navbar-right a {
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-size: 14px;
 }
 
-.navbar-right span{
-  cursor: pointer;
-  font-size: 20px;
-  background-color: black;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
+.settings {
+    cursor: pointer;
+    font-size: 20px;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
 }
 
-.user-img{
-  width: 30px;
-  cursor: pointer;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 50%;
+.user-img {
+    width: 30px;
+    cursor: pointer;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-.menu-div{
-  cursor: pointer;
-  display: none;
+.menu-div {
+    cursor: pointer;
+    display: none;
 }
 
-.menu-div span{
-  background-color: #1c1c1d;
-  padding: 4px;
-  border-radius: 4px;
-  color: white;
-  font-size: 20px;
+.menu-div img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+.menu-div span {
+    background-color: #1c1c1d;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    font-size: 20px;
 }
 
 .typing-test {
-  max-width: 800px;
-  margin: 3rem auto;
-  text-align: center;
-  padding: 0 1rem;
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: center;
+    padding: 0 1rem;
 }
 
 .typing-test h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .typing-instructions {
-  color: #515355;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+    color: #515355;
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
 .typing-text {
-  background-color: #f9fafb; 
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  color: #111827;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  margin-top: 16px;
-  letter-spacing: 1.1px;
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 16px;
+    letter-spacing: 1.1px;
 }
 
 .wrong {
-  background-color: red;
-  color: white;
+    background-color: red;
+    color: white;
 }
 
 .correct {
-  background-color: lightgreen;
+    background-color: lightgreen;
 }
 
 .typing-input {
-  width: 100%;
-  min-height: 120px;
-  box-sizing: border-box;
-  padding: 1rem;
-  font-size: 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  resize: none;
-  outline: none;
-  margin-bottom: 2rem;
-  background-color: #ffffff;
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    resize: none;
+    outline: none;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
 }
 
 .typing-stats {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .stat-box {
-  width: 33%;
-  background-color: #f3f4f6;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  min-width: 100px;
+    width: 33%;
+    background-color: #f3f4f6;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    min-width: 100px;
 }
 
 .stat-label {
-  font-size: 0.875rem;
-  color: #6b7280;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    margin-bottom: 0.25rem;
 }
 
 .stat-value {
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: sans-serif;
-  color: #111827;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #111827;
 }
 
 .restart-button {
-  background-color: black;
-  color: white;
-  padding: 0.5rem 1.25rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.text-length{
-  display: flex;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  font-size: 18px;
-  gap: 10px;
-  margin-top: -16px;
+.text-length {
+    display: flex;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    gap: 10px;
+    margin-top: -16px;
 }
 
-.text-length p{
-  cursor: pointer;
+.text-length p {
+    cursor: pointer;
 }
 
 .footer-content {
-  margin: auto;
-  font-size: 16px;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 70px;
+    margin: auto;
+    font-size: 16px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
 }
 
-
-
-
 /* About Css */
-.home-button{
-  display: inline-block;
-  background-color: black;
-  color: white;
-  font-size: 0.8rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 10px 10px;
-  text-decoration: none;
-  font-family: sans-serif;
-  margin-left: 24px;
-  margin-top: 11px; 
+.home-button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-family: sans-serif;
+    margin-left: 24px;
+    margin-top: 11px;
 }
 
 .about-container {
-  max-width: 800px;
-  margin: 24px auto;
-  padding: 24px;
-  background: #ffffff;
-  font-family: "Segoe UI", sans-serif;
-  color: #333;
+    max-width: 800px;
+    margin: 24px auto;
+    padding: 24px;
+    background: #ffffff;
+    font-family: "Segoe UI", sans-serif;
+    color: #333;
 }
 
 .about-container h1 {
-  text-align: center;
-  margin-bottom: 24px;
-  color: #222;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #222;
 }
 
 .about-container p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 16px;
 }
 
 .about-footer {
-  margin-top: 70px;
-  text-align: center;
-  font-size: 16px;
-  color: black;
-  font-family: sans-serif;
+    margin-top: 70px;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    font-family: sans-serif;
 }
-
-
 
 /* Practice Css */
 
 .practice-section {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
-  text-align: center;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
 }
 
 .practice-heading {
-  font-size: 2rem;
-  margin-top: 60px;
-  margin-bottom: 10px;
-  font-family: 'Segoe UI', sans-serif;
+    font-size: 2rem;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    font-family: "Segoe UI", sans-serif;
 }
 
 .practice-description {
-  color: #555;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
 }
 
-.coming-soon{
-  color: red;
-  font-family: 'Segoe UI', sans-serif;
+.coming-soon {
+    color: red;
+    font-family: "Segoe UI", sans-serif;
 }
 
 .practice-container {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .practice-box,
 .coming-soon-box {
-  border: 2px solid black;
-  border-radius: 8px;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-  background-color: white;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  flex-shrink: 0;
-  font-size: 16px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .coming-soon-box {
-  background-color: #fff3e0;
-  border-color: #ffa726;
-  color: #fb8c00;
-  font-weight: bold;
+    background-color: #fff3e0;
+    border-color: #ffa726;
+    color: #fb8c00;
+    font-weight: bold;
 }
 
 /* Settings Css */
 
-.font-family-div{
-  margin: 22px;
-  margin-top: 45px;
+.font-family-div {
+    margin: 22px;
+    margin-top: 45px;
 }
 
-.font-family-div h1{
-  font-family: sans-serif;
-  font-size: 22px;
-  text-decoration: underline;
+.font-family-div h1 {
+    font-family: sans-serif;
+    font-size: 22px;
+    text-decoration: underline;
 }
 
-.font-div p{
-  background-color: #606b77;
-  width: max-content;
-  color: white;
-  padding: 8px;
-  border-radius: 4px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.font-div p {
+    background-color: #606b77;
+    width: max-content;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
 }
 
-.font-family-name{
-  cursor: pointer;
+.font-family-name {
+    cursor: pointer;
 }
 
+.star {
+    background-color: none;
+    font-size: 20px;
+}
 
 @media (max-width: 610px) {
-  .practice-box,
-  .coming-soon-box {
-    width: 95%;
-    margin: 10px auto;
-  }
+    .practice-box,
+    .coming-soon-box {
+        width: 95%;
+        margin: 10px auto;
+    }
 }
 
-@media(width<489px){
-  .stat-box{
-    width: 100%;
-  }
-  .menu-div{
-    display: block;
-  }
-  .navbar-right{
-    display: none;
-  }
+@media (width<489px) {
+    .stat-box {
+        width: 100%;
+    }
+    .menu-div {
+        display: block;
+    }
+    .navbar-right {
+        display: none;
+    }
+    .menu-div {
+        cursor: pointer;
+        display: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .menu-div a{
+      display: flex;
+      align-items: center;
+    }
 }

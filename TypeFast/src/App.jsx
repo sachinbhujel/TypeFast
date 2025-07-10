@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Settings from "./Settings";
+import "/public/github-logo.png";
 import "./App.css";
 
 function App() {
@@ -103,7 +104,10 @@ function App() {
     return (
         <>
             {isSettingsOpen ? (
-                <Settings setIsSettingsOpen={setIsSettingsOpen} setFontName={setFontName}/>
+                <Settings
+                    setIsSettingsOpen={setIsSettingsOpen}
+                    setFontName={setFontName}
+                />
             ) : (
                 <div className="app">
                     <div className="navbar">
@@ -125,7 +129,7 @@ function App() {
                             <Link to="/about">About</Link>
                             <Link to="/practice">Practice</Link>
                             {isDisabled ? (
-                                <a href="#" style={{color: "grey"}}>
+                                <a href="#" style={{ color: "grey" }}>
                                     Leaderboard
                                 </a>
                             ) : (
@@ -133,13 +137,24 @@ function App() {
                             )}
 
                             <span
-                                className="material-symbols-outlined"
+                                className="material-symbols-outlined settings"
                                 onClick={handleSettings}
                             >
                                 settings
                             </span>
                         </div>
                         <div className="menu-div">
+                            <a
+                                href="https://github.com/Sachinbhujel/TypeFast"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src="/public/github-logo.png"
+                                    alt="GitHub Repo"
+                                />
+                            </a>
+
                             <span className="material-symbols-outlined">
                                 menu
                             </span>
@@ -150,7 +165,10 @@ function App() {
                         <p className="typing-instructions">
                             Type the following text as quickly and accurately as
                             possible. Your typing speed and accuracy will be
-                            calculated in <span style={{color: "black", fontWeight: "600"}}>real-time.</span>
+                            calculated in{" "}
+                            <span style={{ color: "black", fontWeight: "600" }}>
+                                real-time.
+                            </span>
                         </p>
                         <div className="text-length">
                             {words_count.map((len, index) => {
@@ -167,7 +185,12 @@ function App() {
                                 );
                             })}
                         </div>
-                        <p className="typing-text" style={{fontFamily: fontName}}>{getHighlighted()}</p>
+                        <p
+                            className="typing-text"
+                            style={{ fontFamily: fontName }}
+                        >
+                            {getHighlighted()}
+                        </p>
 
                         <textarea
                             className="typing-input"
