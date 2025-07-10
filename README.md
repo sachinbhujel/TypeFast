@@ -19,7 +19,6 @@
 ## 🖼️ Demo
 
 > Live Site: [https://your-deployed-url.com](https://your-deployed-url.com)  
-*(Replace this with your actual deployment URL – Vercel, Netlify, etc.)*
 
 ---
 
@@ -35,26 +34,6 @@
 - **React Router DOM** – Page navigation
 - **JavaScript** – Core typing logic
 - **CSS** – Styling and layout  
-*(Add Tailwind, SCSS, or other libraries if used)*
-
----
-
-## 📁 Folder Structure
-
-TypeFast/
-│
-├── public/
-├── src/
-│ ├── components/
-│ ├── pages/
-│ │ ├── Practice.jsx
-│ │ ├── Leaderboard.jsx
-│ │ └── About.jsx
-│ ├── App.jsx
-│ ├── App.css
-│ └── index.js
-├── package.json
-└── README.md
 
 ---
 
