@@ -11,6 +11,7 @@ function App() {
     const [timeTaken, setTimeTaken] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [isDisabled] = useState(true);
 
     const handleSettings = () => {
         setIsSettingsOpen(true);
@@ -101,7 +102,7 @@ function App() {
     return (
         <>
             {isSettingsOpen ? (
-                <Settings setIsSettingsOpen={setIsSettingsOpen}/>
+                <Settings setIsSettingsOpen={setIsSettingsOpen} />
             ) : (
                 <div className="app">
                     <div className="navbar">
@@ -122,7 +123,14 @@ function App() {
                         <div className="navbar-right">
                             <Link to="/about">About</Link>
                             <Link to="/practice">Practice</Link>
-                            <Link to="/leaderboard">Leaderboard</Link>
+                            {isDisabled ? (
+                                <a href="#" style={{color: "grey"}}>
+                                    Leaderboard
+                                </a>
+                            ) : (
+                                <Link to="/leaderboard">Leaderboard</Link>
+                            )}
+
                             <span
                                 className="material-symbols-outlined"
                                 onClick={handleSettings}
@@ -141,7 +149,7 @@ function App() {
                         <p className="typing-instructions">
                             Type the following text as quickly and accurately as
                             possible. Your typing speed and accuracy will be
-                            calculated in real-time.
+                            calculated in <span style={{color: "black", fontWeight: "600"}}>real-time.</span>
                         </p>
                         <div className="text-length">
                             {words_count.map((len, index) => {
