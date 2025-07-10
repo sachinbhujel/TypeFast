@@ -102,7 +102,8 @@ body::-webkit-scrollbar {
 
 .typing-instructions {
     color: #515355;
-    font-size: 1rem;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-bottom: 1rem;
 }
 
