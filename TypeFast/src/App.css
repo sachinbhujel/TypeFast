@@ -68,7 +68,6 @@ body::-webkit-scrollbar {
 }
 
 .menu-div {
-    cursor: pointer;
     display: none;
 }
 
