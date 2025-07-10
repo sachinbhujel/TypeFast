@@ -12,6 +12,7 @@ function App() {
     const [isFinished, setIsFinished] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [isDisabled] = useState(true);
+    const [fontName, setFontName] = useState("sans-serif");
 
     const handleSettings = () => {
         setIsSettingsOpen(true);
@@ -102,7 +103,7 @@ function App() {
     return (
         <>
             {isSettingsOpen ? (
-                <Settings setIsSettingsOpen={setIsSettingsOpen} />
+                <Settings setIsSettingsOpen={setIsSettingsOpen} setFontName={setFontName}/>
             ) : (
                 <div className="app">
                     <div className="navbar">
@@ -166,7 +167,7 @@ function App() {
                                 );
                             })}
                         </div>
-                        <p className="typing-text">{getHighlighted()}</p>
+                        <p className="typing-text" style={{fontFamily: fontName}}>{getHighlighted()}</p>
 
                         <textarea
                             className="typing-input"

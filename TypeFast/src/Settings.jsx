@@ -1,16 +1,24 @@
-export default function Settings({ setIsSettingsOpen }) {
+export default function Settings({ setIsSettingsOpen, setFontName }) {
     const fonts = [
-        "Arial",
-        "Helvetica",
-        "Times New Roman",
-        "Courier New",
-        "Georgia",
+        "sans-serif",
+        "Cursive",
+        "fantasy",
+        "monospace",
+        "emoji",
+        "system-ui",
+        "serif",
+
     ];
 
     const handleBackSettings = () => {
         setIsSettingsOpen(false);
     };
 
+    const handleFontName = (index) => {
+        setFontName(fonts[index]);
+        setIsSettingsOpen(false);
+        console.log(index)
+    }
     return (
         <>
             <div className="setting-div">
@@ -21,7 +29,7 @@ export default function Settings({ setIsSettingsOpen }) {
                     <h1>Font Family</h1>
                     <div className="font-div">
                         {fonts.map((font_family, index) => {
-                            return <p key={index}>{font_family}</p>;
+                            return <p key={index} className="font-family-name" onClick={() => handleFontName(index)}>{font_family}</p>;
                         })}
                     </div>
                 </div>
