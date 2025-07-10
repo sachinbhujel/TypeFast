@@ -22,12 +22,6 @@
 
 ---
 
-## 📸 Screenshots
-
-> *(Include screenshots or GIFs of your app here if available)*
-
----
-
 ## 🛠️ Tech Stack
 
 - **React** – Frontend library
