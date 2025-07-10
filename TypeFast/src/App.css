@@ -64,8 +64,8 @@ body::-webkit-scrollbar {
 }
 
 .menu-div img {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     object-fit: cover;
 }
 
@@ -356,7 +356,7 @@ body::-webkit-scrollbar {
         display: none;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 5px;
     }
     .menu-div a{
       display: flex;

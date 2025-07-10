@@ -150,7 +150,7 @@ function App() {
                                 rel="noopener noreferrer"
                             >
                                 <img
-                                    src="/public/github-logo.png"
+                                    src="https://i.imgur.com/PshYMjN.png"
                                     alt="GitHub Repo"
                                 />
                             </a>
