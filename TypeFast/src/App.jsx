@@ -10,8 +10,12 @@ function App() {
     const [timeTaken, setTimeTaken] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
 
+    const [wordLimit, setWordLimit] = useState(null);
+
     const targetText =
         "The quick brown fox jumps over the lazy dog. This is a classic sentence used to test typing speed because it contains every letter of the alphabet. Try to type it accurately and quickly to see your words per minute (WPM) and accuracy.";
+
+    const words_count = ["5", "10", "15", "20"];
 
     const handleValue = (e) => {
         if (isFinished) return;
@@ -23,9 +27,14 @@ function App() {
             setStartTime(Date.now());
         }
 
+        const targetWords = targetText.split(" ");
+        const slicedTarget = wordLimit
+            ? targetWords.slice(0, wordLimit).join(" ")
+            : targetText;
+
         let correctChar = 0;
         for (let i = 0; i < input.length; i++) {
-            if (input[i] === targetText[i]) {
+            if (input[i] === slicedTarget[i]) {
                 correctChar++;
             }
         }
@@ -42,7 +51,7 @@ function App() {
             elapsedMinutes > 0 ? Math.round(wordsTyped / elapsedMinutes) : 0;
         setWpm(currentWpm);
 
-        if (input.length === targetText.length) {
+        if (input.length === slicedTarget.length) {
             const end = Date.now();
             setTimeTaken(((end - startTime) / 1000).toFixed(2));
             setIsFinished(true);
@@ -50,8 +59,11 @@ function App() {
     };
 
     const getHighlighted = () => {
+        const targetWords = targetText.split(" ");
+        const slicedText = wordLimit ? targetWords.slice(0, wordLimit).join(" ") : targetText;
+
         const inputChars = word.split("");
-        const targetChars = targetText.split("");
+        const targetChars = slicedText.split("");
         return targetChars.map((char, index) => {
             const userChar = inputChars[index];
 
@@ -116,10 +128,17 @@ function App() {
                         calculated in real-time.
                     </p>
                     <div className="text-length">
-                        <p>5 /</p>
-                        <p>10 /</p>
-                        <p>15 /</p>
-                        <p>20</p>
+                        {words_count.map((len, index) => {
+                            return (
+                                <p
+                                    key={index}
+                                    onClick={() => setWordLimit(Number(len))}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    {len} /
+                                </p>
+                            );
+                        })}
                     </div>
                     <p className="typing-text">{getHighlighted()}</p>
 
@@ -152,9 +171,7 @@ function App() {
                     </button>
                     <footer className="footer">
                         <div className="footer-content">
-                            <p>
-                                Made with ❤️ by the TypeFast Team
-                            </p>
+                            <p>Made with ❤️ by the TypeFast Team</p>
                         </div>
                     </footer>
                 </div>
