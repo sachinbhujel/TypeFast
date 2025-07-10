@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Settings from "./Settings";
 import "/public/github-logo.png";
+import WebsiteOpen from "./WebsiteOpen";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [isDisabled] = useState(true);
     const [fontName, setFontName] = useState("sans-serif");
+    const [showWebsiteOpen, setShowWebsiteOpen] = useState(true);
 
     const handleSettings = () => {
         setIsSettingsOpen(true);
@@ -101,9 +103,21 @@ function App() {
         setIsFinished(false);
     };
 
+    useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowWebsiteOpen(false);
+    }, 1000); 
+
+    return () => clearTimeout(timer);
+  }, []);
+
     return (
         <>
-            {isSettingsOpen ? (
+            {
+                showWebsiteOpen ? (
+                    <WebsiteOpen />
+                ) : (
+                    isSettingsOpen ? (
                 <Settings
                     setIsSettingsOpen={setIsSettingsOpen}
                     setFontName={setFontName}
@@ -229,7 +243,9 @@ function App() {
                         </footer>
                     </div>
                 </div>
-            )}
+            )
+                )
+            }
         </>
     );
 }
