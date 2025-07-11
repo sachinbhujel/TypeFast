@@ -227,14 +227,14 @@ body::-webkit-scrollbar {
 }
 
 .about-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 24px auto;
     padding: 24px;
     background: #ffffff;
     color: #333;
 }
 
-.about-container div {
+.about-container h1 {
     text-align: center;
     margin-bottom: 24px;
     color: #222;
@@ -243,8 +243,9 @@ body::-webkit-scrollbar {
 }
 
 .about-container p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.6;
+    font-family: 'Segoe UI', sans-serif;
     margin-bottom: 16px;
 }
 
