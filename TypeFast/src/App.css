@@ -243,6 +243,7 @@ body::-webkit-scrollbar {
 }
 
 .about-container p {
+    text-align: center;
     font-size: 15px;
     line-height: 1.6;
     font-family: 'Segoe UI', sans-serif;
