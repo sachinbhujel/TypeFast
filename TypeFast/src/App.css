@@ -235,7 +235,7 @@ body::-webkit-scrollbar {
     color: #333;
 }
 
-.about-container h1 {
+.about-container div {
     text-align: center;
     margin-bottom: 24px;
     color: #222;
