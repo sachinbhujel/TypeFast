@@ -413,7 +413,6 @@ body::-webkit-scrollbar {
         display: none;
     }
     .menu-div {
-        cursor: pointer;
         display: none;
         display: flex;
         align-items: center;
