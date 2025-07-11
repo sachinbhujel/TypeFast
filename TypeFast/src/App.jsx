@@ -14,6 +14,15 @@ function App() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [isDisabled] = useState(true);
     const [fontName, setFontName] = useState("sans-serif");
+    const [sideNavOpen, setSideNavOpen] = useState(false);
+
+    const handleMenu = () => {
+        setSideNavOpen(true);
+    }
+
+    const handleCloseSideNav = () => {
+        setSideNavOpen(false);
+    }
 
     const handleSettings = () => {
         setIsSettingsOpen(true);
@@ -103,6 +112,28 @@ function App() {
 
     return (
         <>
+            {sideNavOpen ? (
+                <div className="side-nav-div">
+                    <span className="material-symbols-outlined close" onClick={handleCloseSideNav}>
+close
+</span>
+                    <Link to="/about" style={{color: "white", textDecoration: "none", fontSize: "20px", fontFamily: "sans-serif"}}>About</Link>
+                    <Link to="/pricing" style={{color: "white", textDecoration: "none", fontSize: "20px", fontFamily: "sans-serif"}}>Pricing</Link>
+                    {isDisabled ? (
+                                <a href="#" style={{ color: "grey", fontSize: "20px", fontFamily: "sans-serif", textDecoration: "none" }}>
+                                    Ranks
+                                </a>
+                            ) : (
+                                <Link to="/leaderboard" style={{color: "white", textDecoration: "none", fontSize: "20px", fontFamily: "sans-serif"}}>Leaderboard</Link>
+                            )}
+                            <span
+                                className="material-symbols-outlined settings"
+                                onClick={handleSettings}
+                            >
+                                settings
+                            </span>
+                </div>
+            ) : ""}
             {isSettingsOpen ? (
                 <Settings
                     setIsSettingsOpen={setIsSettingsOpen}
@@ -155,7 +186,7 @@ function App() {
                                 />
                             </a>
 
-                            <span className="material-symbols-outlined">
+                            <span className="material-symbols-outlined" onClick={handleMenu}>
                                 menu
                             </span>
                         </div>

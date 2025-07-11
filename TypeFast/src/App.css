@@ -382,6 +382,33 @@ body::-webkit-scrollbar {
   animation: fadeInUp 1s ease-out forwards;
 }
 
+/* Side Nav Css */
+
+.side-nav-div{
+    height: 100dvh;
+    background: black;
+    position: fixed;
+    right: 0;
+    top: 0px;
+    display: flex;
+    width: 50%;
+    gap: 20px;
+    align-items: center;
+    padding-top: 100px;
+    flex-direction: column;
+}
+
+.close{
+    color: black;
+    position: absolute;
+    top: 12px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+    font-size: 18px;
+    right: 10px;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
