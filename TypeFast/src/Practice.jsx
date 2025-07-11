@@ -44,7 +44,7 @@ function PracticeSets() {
                 <footer className="footer">
                         <div className="footer-content">
                             <p>
-                                Made with ❤️ by the TypeFast Team
+                                Made with ❤️ by the <b>TypeFast Team</b>
                             </p>
                         </div>
                     </footer>
