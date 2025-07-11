@@ -96,7 +96,7 @@ body::-webkit-scrollbar {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", sans-serif;
 }
 
 .typing-instructions {
