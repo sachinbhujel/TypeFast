@@ -7,12 +7,12 @@ function About() {
             <Link to="/" className="home-button">Back To Home</Link>
             <div className="about-container">
                 <h2>About TypeFast</h2>
-                <p>
+                <h4>
                     <strong>TypeFast</strong> is a modern typing speed test
                     platform designed to help users improve their typing
                     accuracy and words per minute (WPM), whether you're a student, professional, or just curious
                     about your typing skills.
-                </p>
+                </h4>
                 <footer className="footer">
                         <div className="footer-content">
                             <p>

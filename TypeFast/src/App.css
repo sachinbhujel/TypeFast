@@ -227,6 +227,7 @@ body::-webkit-scrollbar {
 }
 
 .about-container {
+    height: 100dvh;
     max-width: 900px;
     margin: 24px auto;
     padding: 24px;
@@ -242,7 +243,8 @@ body::-webkit-scrollbar {
     font-family: "Segoe UI", sans-serif;
 }
 
-.about-container p {
+.about-container h4 {
+    font-weight: 300;
     text-align: center;
     font-size: 15px;
     line-height: 1.6;
