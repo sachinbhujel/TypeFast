@@ -11,8 +11,7 @@ function About() {
                     <strong>TypeFast</strong> is a modern typing speed test
                     platform designed to help users improve their typing
                     accuracy and words per minute (WPM), whether you're a student, professional, or just curious
-                    about your typing skills, TypeFast offers a clean and
-                    responsive interface for real-time feedback.
+                    about your typing skills.
                 </p>
                 <footer className="footer">
                         <div className="footer-content">
