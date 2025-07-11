@@ -93,7 +93,7 @@ body::-webkit-scrollbar {
 }
 
 .typing-test h2 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -132,7 +132,7 @@ body::-webkit-scrollbar {
     min-height: 120px;
     box-sizing: border-box;
     padding: 1rem;
-    font-size: 1rem;
+    font-size: 14px;
     border: 1px solid #d1d5db;
     border-radius: 0.5rem;
     resize: none;
