@@ -14,15 +14,13 @@ function About() {
                     about your typing skills, TypeFast offers a clean and
                     responsive interface for real-time feedback.
                 </p>
-                <p>
-                    Built with React.js, this platform calculates your typing
-                    speed, accuracy, and time taken as you type. We also ensure
-                    a fair test environment by preventing copy-paste inputs. More features like user profiles, leaderboards, and dark
-                    mode are coming soon!
-                </p>
-                <p className="about-footer">
-                    Made with ❤️ by the TypeFast Team.
-                </p>
+                <footer className="footer">
+                        <div className="footer-content">
+                            <p>
+                                Made with ❤️ by the TypeFast Team
+                            </p>
+                        </div>
+                    </footer>
             </div>
         </>
     );
