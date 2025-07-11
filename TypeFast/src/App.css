@@ -250,14 +250,6 @@ body::-webkit-scrollbar {
     margin-bottom: 16px;
 }
 
-.about-footer {
-    margin-top: 80px;
-    text-align: center;
-    font-size: 16px;
-    color: black;
-    font-family: sans-serif;
-}
-
 /* Practice Css */
 
 .practice-section {

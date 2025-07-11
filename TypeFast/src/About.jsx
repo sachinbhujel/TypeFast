@@ -10,7 +10,7 @@ function About() {
                 <p>
                     <strong>TypeFast</strong> is a modern typing speed test
                     platform designed to help users improve their typing
-                    accuracy and words per minute (WPM).
+                    accuracy and words per minute (WPM) dknfkcn fcnnd xfnc ewdxfc ed xnc end xfc ewdx fc ewdnx cn endx cvj .
                 </p>
                 <footer className="footer">
                         <div className="footer-content">
