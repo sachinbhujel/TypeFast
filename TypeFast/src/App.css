@@ -234,12 +234,12 @@ body::-webkit-scrollbar {
     color: #333;
 }
 
-.about-container h1 {
+.about-container h2 {
     text-align: center;
-    margin-bottom: 24px;
-    color: #222;
-    font-family: 'Segoe UI', sans-serif;
     font-size: 1.9rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Segoe UI", sans-serif;
 }
 
 .about-container p {
