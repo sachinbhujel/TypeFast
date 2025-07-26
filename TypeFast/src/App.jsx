@@ -18,11 +18,11 @@ function App() {
 
     const handleMenu = () => {
         setSideNavOpen(true);
-    }
+    };
 
     const handleCloseSideNav = () => {
         setSideNavOpen(false);
-    }
+    };
 
     const handleSettings = () => {
         setIsSettingsOpen(true);
@@ -114,26 +114,69 @@ function App() {
         <>
             {sideNavOpen ? (
                 <div className="side-nav-div">
-                    <span className="material-symbols-outlined close" onClick={handleCloseSideNav}>
-close
-</span>
-                    <Link to="/about" style={{color: "white", textDecoration: "none", fontSize: "20px", fontFamily: "sans-serif"}}>About</Link>
-                    <Link to="/pricing" style={{color: "white", textDecoration: "none", fontSize: "20px", fontFamily: "sans-serif"}}>Pricing</Link>
+                    <span
+                        className="material-symbols-outlined close"
+                        onClick={handleCloseSideNav}
+                    >
+                        close
+                    </span>
+                    <Link
+                        to="/about"
+                        style={{
+                            color: "white",
+                            textDecoration: "none",
+                            fontSize: "20px",
+                            fontFamily: "sans-serif",
+                        }}
+                    >
+                        About
+                    </Link>
+                    <Link
+                        to="/practice"
+                        style={{
+                            color: "white",
+                            textDecoration: "none",
+                            fontSize: "20px",
+                            fontFamily: "sans-serif",
+                        }}
+                    >
+                        Practice
+                    </Link>
                     {isDisabled ? (
-                                <a href="#" style={{ color: "grey", fontSize: "20px", fontFamily: "sans-serif", textDecoration: "none" }}>
-                                    Ranks
-                                </a>
-                            ) : (
-                                <Link to="/leaderboard" style={{color: "white", textDecoration: "none", fontSize: "20px", fontFamily: "sans-serif"}}>Leaderboard</Link>
-                            )}
-                            <span
-                                className="material-symbols-outlined settings"
-                                onClick={handleSettings}
-                            >
-                                settings
-                            </span>
+                        <a
+                            href="#"
+                            style={{
+                                color: "grey",
+                                fontSize: "20px",
+                                fontFamily: "sans-serif",
+                                textDecoration: "none",
+                            }}
+                        >
+                            Ranks
+                        </a>
+                    ) : (
+                        <Link
+                            to="/leaderboard"
+                            style={{
+                                color: "white",
+                                textDecoration: "none",
+                                fontSize: "20px",
+                                fontFamily: "sans-serif",
+                            }}
+                        >
+                            Leaderboard
+                        </Link>
+                    )}
+                    <span
+                        className="material-symbols-outlined settings"
+                        onClick={handleSettings}
+                    >
+                        settings
+                    </span>
                 </div>
-            ) : ""}
+            ) : (
+                ""
+            )}
             {isSettingsOpen ? (
                 <Settings
                     setIsSettingsOpen={setIsSettingsOpen}
@@ -186,7 +229,10 @@ close
                                 />
                             </a>
 
-                            <span className="material-symbols-outlined" onClick={handleMenu}>
+                            <span
+                                className="material-symbols-outlined"
+                                onClick={handleMenu}
+                            >
                                 menu
                             </span>
                         </div>
@@ -255,7 +301,9 @@ close
                         </button>
                         <footer className="footer">
                             <div className="footer-content">
-                                <p>Made with ❤️ by the TypeFast Team</p>
+                                <p>
+                                    Made with ❤️ by the <b>TypeFast Team</b>
+                                </p>
                             </div>
                         </footer>
                     </div>

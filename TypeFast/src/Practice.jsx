@@ -25,7 +25,8 @@ function PracticeSets() {
                 <h2 className="practice-heading">Practice Sets</h2>
                 <p className="practice-description">
                     Choose a set below to start improving your typing skills.
-                    More sets will be <span className="coming-soon">added soon!</span>
+                    More sets will be{" "}
+                    <span className="coming-soon">added soon!</span>
                 </p>
 
                 <div className="practice-container">
@@ -42,12 +43,12 @@ function PracticeSets() {
                     </div>
                 </div>
                 <footer className="footer">
-                        <div className="footer-content">
-                            <p>
-                                Made with ❤️ by the <b>TypeFast Team</b>
-                            </p>
-                        </div>
-                    </footer>
+                    <div className="footer-content">
+                        <p>
+                            Made with ❤️ by the <b>TypeFast Team</b>
+                        </p>
+                    </div>
+                </footer>
             </div>
         </>
     );

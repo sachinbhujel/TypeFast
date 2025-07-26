@@ -83,6 +83,7 @@ body::-webkit-scrollbar {
     border-radius: 4px;
     color: white;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .typing-test {
@@ -404,6 +405,7 @@ body::-webkit-scrollbar {
     padding: 5px;
     font-size: 18px;
     right: 10px;
+    cursor: pointer;
 }
 
 @keyframes fadeInUp {
