@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Settings from "./Settings";
 import "/public/github-logo.png";
 import "./App.css";
+import confetti from "canvas-confetti";
 
 function App() {
     const [word, setWord] = useState("");
@@ -27,8 +28,18 @@ function App() {
         "Building complex applications requires deep understanding of architecture and performance optimization. Every function, loop, and request impacts how fast and reliable the software feels to its users.",
         "Asynchronous programming helps manage multiple tasks without blocking execution. Mastering this concept is key for creating efficient, high-performance web applications that can handle large data streams in real time.",
         "From simple ideas to advanced designs, every project starts with a single line of code. Developers imagine, build, test, and refine until the final version feels just right.",
+        "The forest wakes as sunlight touches the leaves. Birds chirp, rivers sparkle, and the wind whispers softly. Nature’s rhythm brings peace to everyone who listens and breathes deeply.",
+        "Raindrops fall gently on the window, creating tiny ripples on puddles below. The smell of wet soil fills the air as people rush home under bright, colorful umbrellas.",
+        "A golden puppy runs across the yard, chasing a small red ball. Its tail wags happily as it jumps, rolls, and barks with excitement, spreading joy to everyone nearby.",
+        "The morning begins with fresh coffee and soft music. Sunlight enters the kitchen, warming the table. A calm start makes the entire day feel lighter and more focused.",
+        "Cars honk, lights flash, and people hurry through crowded streets. The city never sleeps; it moves with endless rhythm, where dreams are born and stories unfold every single day.",
+        "A plane takes off above the clouds, leaving the city behind. New places, unknown faces, and adventures await. Traveling opens minds and fills hearts with memories that last forever.",
+        "The old library smells of paper and ink. Each shelf holds thousands of stories waiting to be discovered. Reading transports us into worlds we may never truly visit.",
+        "Waves crash against the shore, leaving trails of foam behind. The salty breeze touches your skin as the sunset paints the horizon orange, gold, and soft shades of pink.",
+        "The moon glows quietly over the calm sea. Stars twinkle like tiny lanterns in the sky. The night feels endless, full of wonder and quiet, gentle mystery.",
+        "Soft tunes echo through the room, carrying emotions words can’t express. Music connects people across cultures and time, reminding everyone that feelings can speak louder than language itself.",
     ];
-    const [startingText] = useState(() => {
+    const [startingText, setStartingText] = useState(() => {
         return Math.floor(Math.random() * 10);
     });
 
@@ -46,6 +57,26 @@ function App() {
 
     const [wordLimit, setWordLimit] = useState(null);
     const words_count = ["5", "15", "40"];
+
+    useEffect(() => {
+        if (isFinished) {
+            const runConfetti = document.querySelector(
+                "#hs-run-on-click-run-confetti"
+            );
+            if (runConfetti) {
+                confetti({
+                    particleCount: 200,
+                    spread: 70,
+                    origin: {
+                        x: 0.5,
+                        y: 0.5,
+                    },
+                    shapes: ["circle", "square"],
+                    resize: true,
+                });
+            }
+        }
+    }, [isFinished]);
 
     const handleValue = (e) => {
         if (isFinished) return;
@@ -124,6 +155,11 @@ function App() {
         setIsFinished(false);
     };
 
+    const handleNew = () => {
+        let randomNum = Math.floor(Math.random() * targetText.length);
+        setStartingText(randomNum);
+    };
+
     return (
         <>
             {sideNavOpen ? (
@@ -198,7 +234,7 @@ function App() {
                     setSideNavOpen={setSideNavOpen}
                 />
             ) : (
-                <div className="app">
+                <div className="app" id="hs-run-on-click-run-confetti">
                     <div className="navbar">
                         <div className="navbar-left">
                             <svg
@@ -308,12 +344,20 @@ function App() {
                             </div>
                         </div>
 
-                        <button
-                            className="restart-button"
-                            onClick={handleRestart}
-                        >
-                            Restart
-                        </button>
+                        <div className="restart-new-div">
+                            <button
+                                className="restart-button"
+                                onClick={handleRestart}
+                            >
+                                Restart
+                            </button>
+                            <button
+                                className="new-one-button"
+                                onClick={handleNew}
+                            >
+                                New one
+                            </button>
+                        </div>
                         <footer className="footer">
                             <div className="footer-content">
                                 <p>

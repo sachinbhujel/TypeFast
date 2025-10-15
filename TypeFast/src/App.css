@@ -147,7 +147,6 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: space-around;
     margin-bottom: 1.5rem;
-    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -173,11 +172,29 @@ body::-webkit-scrollbar {
     color: #111827;
 }
 
+.restart-new-div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .restart-button {
     background-color: black;
     color: white;
     padding: 0.5rem 1.25rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.new-one-button {
+    border: 1px solid black;
+    color: black;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
     border: none;
     border-radius: 0.375rem;
     cursor: pointer;
@@ -423,6 +440,9 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 610px) {
+    .typing-stats {
+        flex-wrap: wrap;
+    }
     .practice-box,
     .coming-soon-box {
         width: 95%;
@@ -430,7 +450,7 @@ body::-webkit-scrollbar {
     }
 }
 
-@media (width<489px) {
+@media (width<496px) {
     .stat-box {
         width: 100%;
     }
