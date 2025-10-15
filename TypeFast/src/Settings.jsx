@@ -1,4 +1,8 @@
-export default function Settings({ setIsSettingsOpen, setFontName }) {
+export default function Settings({
+    setIsSettingsOpen,
+    setFontName,
+    setSideNavOpen,
+}) {
     const fonts = [
         "sans-serif",
         "Cursive",
@@ -16,7 +20,7 @@ export default function Settings({ setIsSettingsOpen, setFontName }) {
     const handleFontName = (index) => {
         setFontName(fonts[index]);
         setIsSettingsOpen(false);
-        console.log(index);
+        setSideNavOpen(false);
     };
     return (
         <>

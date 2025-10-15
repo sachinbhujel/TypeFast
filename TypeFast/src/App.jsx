@@ -15,6 +15,22 @@ function App() {
     const [isDisabled] = useState(true);
     const [fontName, setFontName] = useState("sans-serif");
     const [sideNavOpen, setSideNavOpen] = useState(false);
+    const targetText = [
+        "The quick brown fox jumps over the lazy dog. This is a classic sentence used to test typing speed because it contains every letter of the alphabet. Try to type it accurately and quickly to see your words per minute (WPM) and accuracy.",
+        "The sun shines bright over the green hills. Birds sing softly in the trees while children play near the park. Everyone smiles as the cool breeze flows gently.",
+        "Tom loves to read books every night before bed. His favorite stories are about magic and adventure. Reading makes him happy and helps him dream of new worlds.",
+        "A small cat sleeps under the warm sunlight. The garden is full of flowers and bees buzzing around. It is a calm and peaceful afternoon in the village.",
+        "Coding is like solving a puzzle every day. Each line of code builds something new and exciting. With patience and creativity, developers can turn ideas into working projects.",
+        "The website loads fast and looks clean on every device. Designers and developers work together to make sure users enjoy every click, scroll, and moment on the screen.",
+        "Learning JavaScript opens many doors for web development. It allows you to create interactive pages, connect to APIs, and build apps that work smoothly across browsers and devices.",
+        "Modern developers focus on scalability, performance, and design. Frameworks like React or Next.js simplify workflow while maintaining flexibility. Efficient code ensures faster delivery and long-term maintainability.",
+        "Building complex applications requires deep understanding of architecture and performance optimization. Every function, loop, and request impacts how fast and reliable the software feels to its users.",
+        "Asynchronous programming helps manage multiple tasks without blocking execution. Mastering this concept is key for creating efficient, high-performance web applications that can handle large data streams in real time.",
+        "From simple ideas to advanced designs, every project starts with a single line of code. Developers imagine, build, test, and refine until the final version feels just right.",
+    ];
+    const [startingText] = useState(() => {
+        return Math.floor(Math.random() * 10);
+    });
 
     const handleMenu = () => {
         setSideNavOpen(true);
@@ -29,11 +45,7 @@ function App() {
     };
 
     const [wordLimit, setWordLimit] = useState(null);
-
-    const targetText =
-        "The quick brown fox jumps over the lazy dog. This is a classic sentence used to test typing speed because it contains every letter of the alphabet. Try to type it accurately and quickly to see your words per minute (WPM) and accuracy.";
-
-    const words_count = ["5", "10", "15", "20"];
+    const words_count = ["5", "15", "40"];
 
     const handleValue = (e) => {
         if (isFinished) return;
@@ -45,10 +57,10 @@ function App() {
             setStartTime(Date.now());
         }
 
-        const targetWords = targetText.split(" ");
+        const targetWords = targetText[startingText].split(" ");
         const slicedTarget = wordLimit
             ? targetWords.slice(0, wordLimit).join(" ")
-            : targetText;
+            : targetText[startingText];
 
         let correctChar = 0;
         for (let i = 0; i < input.length; i++) {
@@ -77,10 +89,12 @@ function App() {
     };
 
     const getHighlighted = () => {
-        const targetWords = targetText.split(" ");
+        const targetWords = targetText[startingText].split(" ");
+        console.log("targetWords", targetWords);
         const slicedText = wordLimit
             ? targetWords.slice(0, wordLimit).join(" ")
-            : targetText;
+            : targetText[startingText];
+        console.log("Sliced text", slicedText);
 
         const inputChars = word.split("");
         const targetChars = slicedText.split("");
@@ -181,6 +195,7 @@ function App() {
                 <Settings
                     setIsSettingsOpen={setIsSettingsOpen}
                     setFontName={setFontName}
+                    setSideNavOpen={setSideNavOpen}
                 />
             ) : (
                 <div className="app">
