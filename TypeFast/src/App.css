@@ -238,7 +238,7 @@ body::-webkit-scrollbar {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    padding: 10px 10px;
+    padding: 10px;
     text-decoration: none;
     font-family: sans-serif;
     margin-left: 24px;
@@ -263,7 +263,7 @@ body::-webkit-scrollbar {
 }
 
 .about-container h4 {
-    font-weight: 300;
+    font-weight: 400;
     text-align: center;
     font-size: 15px;
     line-height: 1.6;
@@ -320,6 +320,12 @@ body::-webkit-scrollbar {
     font-size: 16px;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
+.practice-box:hover,
+.coming-soon-box:hover {
+    transform: scale(1.03);
 }
 
 .coming-soon-box {
