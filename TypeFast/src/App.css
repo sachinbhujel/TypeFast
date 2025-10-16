@@ -10,17 +10,13 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.app {
-    margin: 20px;
-}
-
 .navbar {
+    padding: 20px;
     margin-top: -10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid #111827;
 }
 
 .logo {
@@ -129,14 +125,35 @@ body::-webkit-scrollbar {
     background-color: lightgreen;
 }
 
+.code-correct {
+    background-color: rgb(5, 169, 5);
+}
+
 pre::-webkit-scrollbar {
     width: 4px;
     height: 2px;
 }
 
 pre::-webkit-scrollbar-thumb {
-    background-color: #000000;
+    background-color: #b6b6b6;
     border-radius: 10px;
+}
+
+.code-div {
+    background-color: #000000;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 16px;
+    letter-spacing: 1.1px;
+}
+
+pre {
+    overflow-x: scroll;
+    text-align: left;
 }
 
 .typing-input {
@@ -251,8 +268,8 @@ pre::-webkit-scrollbar-thumb {
     padding: 10px;
     text-decoration: none;
     font-family: sans-serif;
-    margin-left: 24px;
-    margin-top: 11px;
+    margin-left: 14px;
+    margin-top: 12px;
 }
 
 .about-container {
@@ -285,7 +302,7 @@ pre::-webkit-scrollbar-thumb {
 
 .practice-section {
     max-width: 900px;
-    margin: 40px auto;
+    margin: auto;
     padding: 0 20px;
     text-align: center;
 }
@@ -311,7 +328,7 @@ pre::-webkit-scrollbar-thumb {
 .practice-container {
     display: flex;
     gap: 20px;
-    padding: 20px;
+    padding: 0px 10px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -325,7 +342,6 @@ pre::-webkit-scrollbar-thumb {
     text-align: center;
     background-color: white;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
     flex-shrink: 0;
     font-size: 16px;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -462,7 +478,6 @@ pre::-webkit-scrollbar-thumb {
     .practice-box,
     .coming-soon-box {
         width: 95%;
-        margin: 10px auto;
     }
 }
 
@@ -491,5 +506,8 @@ pre::-webkit-scrollbar-thumb {
     }
     .typing-input {
         font-size: 1.1rem;
+    }
+    .code-div {
+        font-size: 1rem;
     }
 }

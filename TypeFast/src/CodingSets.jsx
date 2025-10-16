@@ -12,12 +12,8 @@ function CodingSets() {
     const [timeTaken, setTimeTaken] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const [startingText, setStartingText] = useState(() => {
-        return Math.floor(Math.random() * 2);
+        return Math.floor(Math.random() * 23);
     });
-    const [wordLimit, setWordLimit] = useState(null);
-    const words_count = ["5", "15", "40"];
-
-    console.log(codingTextData);
 
     useEffect(() => {
         if (isFinished) {
@@ -49,10 +45,7 @@ function CodingSets() {
             setStartTime(Date.now());
         }
 
-        const targetWords = codingTextData[startingText].split(" ");
-        const slicedTarget = wordLimit
-            ? targetWords.slice(0, wordLimit).join(" ")
-            : codingTextData[startingText];
+        const slicedTarget = codingTextData[startingText];
 
         let correctChar = 0;
         for (let i = 0; i < input.length; i++) {
@@ -81,10 +74,7 @@ function CodingSets() {
     };
 
     const getHighlighted = () => {
-        const targetWords = codingTextData[startingText].split(" ");
-        const slicedText = wordLimit
-            ? targetWords.slice(0, wordLimit).join(" ")
-            : codingTextData[startingText];
+        const slicedText = codingTextData[startingText];
 
         const inputChars = word.split("");
         const targetChars = slicedText.split("");
@@ -98,7 +88,10 @@ function CodingSets() {
             const isCorrect = userChar === char;
 
             return (
-                <span key={index} className={isCorrect ? "correct" : "wrong"}>
+                <span
+                    key={index}
+                    className={isCorrect ? "code-correct" : "wrong"}
+                >
                     {char}
                 </span>
             );
@@ -141,29 +134,11 @@ function CodingSets() {
                             real-time.
                         </span>
                     </p>
-                    <div className="text-length">
-                        {words_count.map((len, index) => {
-                            return (
-                                <p
-                                    key={index}
-                                    onClick={() => setWordLimit(Number(len))}
-                                    style={{ cursor: "pointer" }}
-                                >
-                                    {len} /
-                                </p>
-                            );
-                        })}
+                    <div className="code-div">
+                        <pre>
+                            <code>{getHighlighted()}</code>
+                        </pre>
                     </div>
-                    <pre
-                        className="typing-text"
-                        style={{
-                            fontFamily: "sans-serif",
-                            overflowX: "scroll",
-                        }}
-                    >
-                        {getHighlighted()}
-                    </pre>
-
                     <textarea
                         className="typing-input"
                         placeholder="Start typing here..."

@@ -58,4 +58,150 @@ export const accuracyTextData = [
     "Nature is full of surprises. From colorful flowers to tall trees and fresh air, being outside helps you feel calm and connected to the earth.",
 ];
 
-export const codingTextData = [`console.log("Hello World")`, `print("Hello World")`];
+export const codingTextData = [
+    `console.log(name);`,
+
+    `// Create a name variable
+let name = "Sachin";
+console.log(name);`,
+
+    `// Print a greeting message
+function greet(name) {
+    console.log("Hello, " + name + "!");
+}
+greet("Alice");`,
+
+    `// Find the sum of two numbers
+function add(a, b) {
+    return a + b;
+}
+console.log(add(3, 5));`,
+
+    `// Check if a number is even or odd
+function checkEven(num) {
+    if (num % 2 === 0) {
+        console.log("Even");
+    } else {
+        console.log("Odd");
+    }
+}
+checkEven(7);`,
+
+    `// Display numbers from 1 to 5
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}`,
+
+    `// Reverse a string
+function reverseText(text) {
+    return text.split("").reverse().join("");
+}
+console.log(reverseText("hello"));`,
+
+    `// Find the largest number in an array
+const numbers = [2, 8, 5, 1];
+const max = Math.max(...numbers);
+console.log(max);`,
+
+    `// Check if a word is a palindrome
+function isPalindrome(word) {
+    return word === word.split("").reverse().join("");
+}
+console.log(isPalindrome("level"));`,
+
+    `// Count vowels in a string
+function countVowels(str) {
+    const vowels = "aeiou";
+    let count = 0;
+    for (let char of str.toLowerCase()) {
+        if (vowels.includes(char)) count++;
+    }
+    return count;
+}
+console.log(countVowels("Programming"));`,
+
+    `// Calculate factorial of a number
+function factorial(n) {
+    let result = 1;
+    for (let i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+console.log(factorial(5));`,
+
+    `// Simple arrow function example
+const multiply = (a, b) => a * b;
+console.log(multiply(4, 6));`,
+
+    `// Show char without colors
+if (userChar == null) {
+    return <span key={index}>{char}</span>;
+}`,
+
+    `// Convert Celsius to Fahrenheit
+function toFahrenheit(celsius) {
+    return (celsius * 9) / 5 + 32;
+}
+console.log(toFahrenheit(25));
+`,
+
+    `// Create a simple object
+const user = {
+    name: "John",
+    age: 22,
+    country: "Nepal"
+};
+console.log(user.name);
+`,
+
+    `// Check if a number is positive
+function isPositive(num) {
+    return num > 0 ? "Positive" : "Negative";
+}
+console.log(isPositive(-3));
+`,
+
+    `// Find the length of an array
+const fruits = ["apple", "banana", "cherry"];
+console.log(fruits.length);
+`,
+
+    `// Use map to double numbers
+const nums = [1, 2, 3, 4];
+const doubled = nums.map(n => n * 2);
+console.log(doubled);
+`,
+
+    `// Simple while loop
+let count = 0;
+while (count < 5) {
+    console.log("Count:", count);
+    count++;
+}
+`,
+
+    `// Function with default parameter
+function sayHello(name = "Guest") {
+    console.log("Hello, " + name + "!");
+}
+sayHello();
+`,
+
+    `// Template literal example
+    const name = "Sara";
+    const age = 20;
+    console.log("My name is ", name, "and I am ", age, "years old.");
+    `,
+
+    `// Random number between 1 and 10
+const random = Math.floor(Math.random() * 10) + 1;
+console.log(random);
+`,
+
+    `// Filter even numbers from array
+const numbers = [1, 2, 3, 4, 5, 6];
+const even = numbers.filter(n => n % 2 === 0);
+console.log(even);
+`,
+];
