@@ -476,4 +476,10 @@ body::-webkit-scrollbar {
         display: flex;
         align-items: center;
     }
+    .typing-text {
+        font-size: 1.1rem;
+    }
+    .typing-input {
+        font-size: 1.1rem;
+    }
 }

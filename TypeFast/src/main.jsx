@@ -6,6 +6,7 @@ import App from "./App";
 import About from "./About";
 import Practice from "./Practice";
 import SpeedSets from "./SpeedSets";
+import AccuracySets from "./AccuracySets";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
                 <Route path="about" element={<About />} />
                 <Route path="practice" element={<Practice />} />
                 <Route path="speedSets" element={<SpeedSets />} />
+                <Route path="accuracySets" element={<AccuracySets />} />
             </Routes>
         </BrowserRouter>
     </StrictMode>

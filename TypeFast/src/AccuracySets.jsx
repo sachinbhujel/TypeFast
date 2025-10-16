@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import confetti from "canvas-confetti";
-import { speedTextData } from "./data/data";
+import { accuracyTextData } from "./data/data";
 
-function SpeedSets() {
+function AccuracySets() {
     const [word, setWord] = useState("");
-    const [wpm, setWpm] = useState(0);
+    const [accuracy, setAccuracy] = useState(0);
     const [startTime, setStartTime] = useState(null);
+    const [timeTaken, setTimeTaken] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const [startingText, setStartingText] = useState(() => {
         return Math.floor(Math.random() * 10);
@@ -15,12 +16,6 @@ function SpeedSets() {
 
     const [wordLimit, setWordLimit] = useState(null);
     const words_count = ["5", "15", "40"];
-    const [userWordsCount, setUserWordsCount] = useState(0);
-    const [highestWpm, setHighestWpm] = useState(0);
-
-    useEffect(() => {
-        setHighestWpm(localStorage.getItem("highest-wpm") || 0);
-    }, []);
 
     useEffect(() => {
         if (isFinished) {
@@ -43,9 +38,6 @@ function SpeedSets() {
     }, [isFinished]);
 
     const handleValue = (e) => {
-        const userWords = e.target.value.trim();
-        const wordCounts = userWords.split(" ").filter((word) => word);
-        setUserWordsCount(wordCounts.length);
         if (isFinished) return;
 
         const input = e.target.value;
@@ -55,33 +47,35 @@ function SpeedSets() {
             setStartTime(Date.now());
         }
 
-        const targetWords = speedTextData[startingText].split(" ");
+        const targetWords = accuracyTextData[startingText].split(" ");
         const slicedTarget = wordLimit
             ? targetWords.slice(0, wordLimit).join(" ")
-            : speedTextData[startingText];
+            : accuracyTextData[startingText];
 
-        const now = Date.now();
-        const elapsedMs = startTime ? now - startTime : 0;
-        const elapsedMinutes = elapsedMs / 1000 / 60;
+        let correctChar = 0;
+        for (let i = 0; i < input.length; i++) {
+            if (input[i] === slicedTarget[i]) {
+                correctChar++;
+            }
+        }
 
-        const wordsTyped = input.length / 5;
-        const currentWpm =
-            elapsedMinutes > 0 ? Math.round(wordsTyped / elapsedMinutes) : 0;
-        setWpm(currentWpm);
+        const acc = Math.round((correctChar / input.length) * 100) || 0;
+        setAccuracy(acc);
 
         if (input.length === slicedTarget.length) {
+            const end = Date.now();
+            setTimeTaken(((end - startTime) / 1000).toFixed(2));
             setIsFinished(true);
-            if (wpm > highestWpm) {
-                localStorage.setItem("highest-wpm", wpm);
-            }
         }
     };
 
+    let error;
     const getHighlighted = () => {
-        const targetWords = speedTextData[startingText].split(" ");
+        error = 0;
+        const targetWords = accuracyTextData[startingText].split(" ");
         const slicedText = wordLimit
             ? targetWords.slice(0, wordLimit).join(" ")
-            : speedTextData[startingText];
+            : accuracyTextData[startingText];
 
         const inputChars = word.split("");
         const targetChars = slicedText.split("");
@@ -93,6 +87,7 @@ function SpeedSets() {
             }
 
             const isCorrect = userChar === char;
+            if (!isCorrect) error++;
 
             return (
                 <span key={index} className={isCorrect ? "correct" : "wrong"}>
@@ -104,18 +99,19 @@ function SpeedSets() {
 
     const handleRestart = () => {
         setWord("");
-        setWpm(0);
+        setAccuracy(0);
         setStartTime(null);
+        setTimeTaken(0);
         setIsFinished(false);
     };
 
     const handleNew = () => {
-        let randomNum = Math.floor(Math.random() * speedTextData.length);
+        let randomNum = Math.floor(Math.random() * accuracyTextData.length);
         setStartingText(randomNum);
         setWord("");
-        setWpm(0);
+        setAccuracy(0);
         setStartTime(null);
-        setUserWordsCount(0);
+        setTimeTaken(0);
         setIsFinished(false);
     };
 
@@ -126,15 +122,14 @@ function SpeedSets() {
             </Link>
             <div className="app" id="hs-run-on-click-run-confetti">
                 <div className="typing-test">
-                    <h2>Speed Set</h2>
+                    <h2>Accuracy Set</h2>
                     <p className="typing-instructions">
-                        Type the sentences below as fast as you can. Your typing
-                        speed will be measured{" "}
+                        Focus on typing the following text as{" "}
+                        <strong>accurately</strong> as possible. Your typing
+                        accuracy and error rate will be calculated in{" "}
                         <span style={{ color: "black", fontWeight: "600" }}>
-                            live
+                            real-time.
                         </span>
-                        . Focus on continuous typing and try to complete all
-                        sentences quickly without stopping.
                     </p>
 
                     <div className="text-length">
@@ -144,9 +139,10 @@ function SpeedSets() {
                                     key={index}
                                     onClick={() => {
                                         setWordLimit(Number(len));
-                                        setWpm(0);
                                         setWord("");
+                                        setAccuracy(0);
                                         setStartTime(null);
+                                        setTimeTaken(0);
                                         setIsFinished(false);
                                     }}
                                     style={{ cursor: "pointer" }}
@@ -174,16 +170,16 @@ function SpeedSets() {
 
                     <div className="typing-stats">
                         <div className="stat-box">
-                            <p className="stat-label">WPM</p>
-                            <p className="stat-value">{wpm}</p>
+                            <p className="stat-label">Time (sec)</p>
+                            <p className="stat-value">{timeTaken}</p>
                         </div>
                         <div className="stat-box">
-                            <p className="stat-label">Words</p>
-                            <p className="stat-value">{userWordsCount}</p>
+                            <p className="stat-label">Errors</p>
+                            <p className="stat-value">{error}</p>
                         </div>
                         <div className="stat-box">
-                            <p className="stat-label">Highest WPM</p>
-                            <p className="stat-value">{highestWpm}</p>
+                            <p className="stat-label">Accuracy (%)</p>
+                            <p className="stat-value">{accuracy}</p>
                         </div>
                     </div>
 
@@ -211,4 +207,4 @@ function SpeedSets() {
     );
 }
 
-export default SpeedSets;
+export default AccuracySets;

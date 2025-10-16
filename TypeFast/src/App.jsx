@@ -4,6 +4,7 @@ import Settings from "./Settings";
 import "/public/github-logo.png";
 import "./App.css";
 import confetti from "canvas-confetti";
+import { targetText } from "./data/data";
 
 function App() {
     const [word, setWord] = useState("");
@@ -16,29 +17,6 @@ function App() {
     const [isDisabled] = useState(true);
     const [fontName, setFontName] = useState("sans-serif");
     const [sideNavOpen, setSideNavOpen] = useState(false);
-    const targetText = [
-        "The quick brown fox jumps over the lazy dog. This is a classic sentence used to test typing speed because it contains every letter of the alphabet. Try to type it accurately and quickly to see your words per minute (WPM) and accuracy.",
-        "The sun shines bright over the green hills. Birds sing softly in the trees while children play near the park. Everyone smiles as the cool breeze flows gently.",
-        "Tom loves to read books every night before bed. His favorite stories are about magic and adventure. Reading makes him happy and helps him dream of new worlds.",
-        "A small cat sleeps under the warm sunlight. The garden is full of flowers and bees buzzing around. It is a calm and peaceful afternoon in the village.",
-        "Coding is like solving a puzzle every day. Each line of code builds something new and exciting. With patience and creativity, developers can turn ideas into working projects.",
-        "The website loads fast and looks clean on every device. Designers and developers work together to make sure users enjoy every click, scroll, and moment on the screen.",
-        "Learning JavaScript opens many doors for web development. It allows you to create interactive pages, connect to APIs, and build apps that work smoothly across browsers and devices.",
-        "Modern developers focus on scalability, performance, and design. Frameworks like React or Next.js simplify workflow while maintaining flexibility. Efficient code ensures faster delivery and long-term maintainability.",
-        "Building complex applications requires deep understanding of architecture and performance optimization. Every function, loop, and request impacts how fast and reliable the software feels to its users.",
-        "Asynchronous programming helps manage multiple tasks without blocking execution. Mastering this concept is key for creating efficient, high-performance web applications that can handle large data streams in real time.",
-        "From simple ideas to advanced designs, every project starts with a single line of code. Developers imagine, build, test, and refine until the final version feels just right.",
-        "The forest wakes as sunlight touches the leaves. Birds chirp, rivers sparkle, and the wind whispers softly. Nature’s rhythm brings peace to everyone who listens and breathes deeply.",
-        "Raindrops fall gently on the window, creating tiny ripples on puddles below. The smell of wet soil fills the air as people rush home under bright, colorful umbrellas.",
-        "A golden puppy runs across the yard, chasing a small red ball. Its tail wags happily as it jumps, rolls, and barks with excitement, spreading joy to everyone nearby.",
-        "The morning begins with fresh coffee and soft music. Sunlight enters the kitchen, warming the table. A calm start makes the entire day feel lighter and more focused.",
-        "Cars honk, lights flash, and people hurry through crowded streets. The city never sleeps; it moves with endless rhythm, where dreams are born and stories unfold every single day.",
-        "A plane takes off above the clouds, leaving the city behind. New places, unknown faces, and adventures await. Traveling opens minds and fills hearts with memories that last forever.",
-        "The old library smells of paper and ink. Each shelf holds thousands of stories waiting to be discovered. Reading transports us into worlds we may never truly visit.",
-        "Waves crash against the shore, leaving trails of foam behind. The salty breeze touches your skin as the sunset paints the horizon orange, gold, and soft shades of pink.",
-        "The moon glows quietly over the calm sea. Stars twinkle like tiny lanterns in the sky. The night feels endless, full of wonder and quiet, gentle mystery.",
-        "Soft tunes echo through the room, carrying emotions words can’t express. Music connects people across cultures and time, reminding everyone that feelings can speak louder than language itself.",
-    ];
     const [startingText, setStartingText] = useState(() => {
         return Math.floor(Math.random() * 10);
     });
@@ -121,11 +99,9 @@ function App() {
 
     const getHighlighted = () => {
         const targetWords = targetText[startingText].split(" ");
-        console.log("targetWords", targetWords);
         const slicedText = wordLimit
             ? targetWords.slice(0, wordLimit).join(" ")
             : targetText[startingText];
-        console.log("Sliced text", slicedText);
 
         const inputChars = word.split("");
         const targetChars = slicedText.split("");
@@ -158,6 +134,12 @@ function App() {
     const handleNew = () => {
         let randomNum = Math.floor(Math.random() * targetText.length);
         setStartingText(randomNum);
+        setWord("");
+        setAccuracy(0);
+        setWpm(0);
+        setStartTime(null);
+        setTimeTaken(0);
+        setIsFinished(false);
     };
 
     return (
