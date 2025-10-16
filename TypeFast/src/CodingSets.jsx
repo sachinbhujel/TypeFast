@@ -2,20 +2,22 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 import confetti from "canvas-confetti";
-import { accuracyTextData } from "./data/data";
+import { codingTextData } from "./data/data";
 
-function AccuracySets() {
+function CodingSets() {
     const [word, setWord] = useState("");
+    const [wpm, setWpm] = useState(0);
     const [accuracy, setAccuracy] = useState(0);
     const [startTime, setStartTime] = useState(null);
     const [timeTaken, setTimeTaken] = useState(0);
     const [isFinished, setIsFinished] = useState(false);
     const [startingText, setStartingText] = useState(() => {
-        return Math.floor(Math.random() * 20);
+        return Math.floor(Math.random() * 2);
     });
-
     const [wordLimit, setWordLimit] = useState(null);
     const words_count = ["5", "15", "40"];
+
+    console.log(codingTextData);
 
     useEffect(() => {
         if (isFinished) {
@@ -47,10 +49,10 @@ function AccuracySets() {
             setStartTime(Date.now());
         }
 
-        const targetWords = accuracyTextData[startingText].split(" ");
+        const targetWords = codingTextData[startingText].split(" ");
         const slicedTarget = wordLimit
             ? targetWords.slice(0, wordLimit).join(" ")
-            : accuracyTextData[startingText];
+            : codingTextData[startingText];
 
         let correctChar = 0;
         for (let i = 0; i < input.length; i++) {
@@ -62,6 +64,15 @@ function AccuracySets() {
         const acc = Math.round((correctChar / input.length) * 100) || 0;
         setAccuracy(acc);
 
+        const now = Date.now();
+        const elapsedMs = startTime ? now - startTime : 0;
+        const elapsedMinutes = elapsedMs / 1000 / 60;
+
+        const wordsTyped = input.length / 5;
+        const currentWpm =
+            elapsedMinutes > 0 ? Math.round(wordsTyped / elapsedMinutes) : 0;
+        setWpm(currentWpm);
+
         if (input.length === slicedTarget.length) {
             const end = Date.now();
             setTimeTaken(((end - startTime) / 1000).toFixed(2));
@@ -69,13 +80,11 @@ function AccuracySets() {
         }
     };
 
-    let error;
     const getHighlighted = () => {
-        error = 0;
-        const targetWords = accuracyTextData[startingText].split(" ");
+        const targetWords = codingTextData[startingText].split(" ");
         const slicedText = wordLimit
             ? targetWords.slice(0, wordLimit).join(" ")
-            : accuracyTextData[startingText];
+            : codingTextData[startingText];
 
         const inputChars = word.split("");
         const targetChars = slicedText.split("");
@@ -87,7 +96,6 @@ function AccuracySets() {
             }
 
             const isCorrect = userChar === char;
-            if (!isCorrect) error++;
 
             return (
                 <span key={index} className={isCorrect ? "correct" : "wrong"}>
@@ -100,16 +108,18 @@ function AccuracySets() {
     const handleRestart = () => {
         setWord("");
         setAccuracy(0);
+        setWpm(0);
         setStartTime(null);
         setTimeTaken(0);
         setIsFinished(false);
     };
 
     const handleNew = () => {
-        let randomNum = Math.floor(Math.random() * accuracyTextData.length);
+        let randomNum = Math.floor(Math.random() * codingTextData.length);
         setStartingText(randomNum);
         setWord("");
         setAccuracy(0);
+        setWpm(0);
         setStartTime(null);
         setTimeTaken(0);
         setIsFinished(false);
@@ -122,29 +132,21 @@ function AccuracySets() {
             </Link>
             <div className="app" id="hs-run-on-click-run-confetti">
                 <div className="typing-test">
-                    <h2>Accuracy Set</h2>
+                    <h2>Coding Set</h2>
                     <p className="typing-instructions">
-                        Focus on typing the following text as{" "}
-                        <strong>accurately</strong> as possible. Your typing
-                        accuracy and error rate will be calculated in{" "}
+                        Type the following text as quickly and accurately as
+                        possible. Your typing speed and accuracy will be
+                        calculated in{" "}
                         <span style={{ color: "black", fontWeight: "600" }}>
                             real-time.
                         </span>
                     </p>
-
                     <div className="text-length">
                         {words_count.map((len, index) => {
                             return (
                                 <p
                                     key={index}
-                                    onClick={() => {
-                                        setWordLimit(Number(len));
-                                        setWord("");
-                                        setAccuracy(0);
-                                        setStartTime(null);
-                                        setTimeTaken(0);
-                                        setIsFinished(false);
-                                    }}
+                                    onClick={() => setWordLimit(Number(len))}
                                     style={{ cursor: "pointer" }}
                                 >
                                     {len} /
@@ -152,12 +154,15 @@ function AccuracySets() {
                             );
                         })}
                     </div>
-                    <p
+                    <pre
                         className="typing-text"
-                        style={{ fontFamily: "sans-serif" }}
+                        style={{
+                            fontFamily: "sans-serif",
+                            overflowX: "scroll",
+                        }}
                     >
                         {getHighlighted()}
-                    </p>
+                    </pre>
 
                     <textarea
                         className="typing-input"
@@ -174,8 +179,8 @@ function AccuracySets() {
                             <p className="stat-value">{timeTaken}</p>
                         </div>
                         <div className="stat-box">
-                            <p className="stat-label">Errors</p>
-                            <p className="stat-value">{error}</p>
+                            <p className="stat-label">WPM</p>
+                            <p className="stat-value">{wpm}</p>
                         </div>
                         <div className="stat-box">
                             <p className="stat-label">Accuracy (%)</p>
@@ -207,4 +212,4 @@ function AccuracySets() {
     );
 }
 
-export default AccuracySets;
+export default CodingSets;

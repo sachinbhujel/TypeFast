@@ -129,6 +129,16 @@ body::-webkit-scrollbar {
     background-color: lightgreen;
 }
 
+pre::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
+}
+
 .typing-input {
     width: 100%;
     min-height: 120px;

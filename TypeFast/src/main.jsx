@@ -7,6 +7,7 @@ import About from "./About";
 import Practice from "./Practice";
 import SpeedSets from "./SpeedSets";
 import AccuracySets from "./AccuracySets";
+import CodingSets from "./CodingSets";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")).render(
                 <Route path="practice" element={<Practice />} />
                 <Route path="speedSets" element={<SpeedSets />} />
                 <Route path="accuracySets" element={<AccuracySets />} />
+                <Route path="codingSets" element={<CodingSets />} />
             </Routes>
         </BrowserRouter>
     </StrictMode>

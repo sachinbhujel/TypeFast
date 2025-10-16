@@ -57,3 +57,5 @@ export const accuracyTextData = [
     "Cooking is both fun and useful. Mixing flavors and learning recipes helps you make delicious food and enjoy time with family or friends.",
     "Nature is full of surprises. From colorful flowers to tall trees and fresh air, being outside helps you feel calm and connected to the earth.",
 ];
+
+export const codingTextData = [`console.log("Hello World")`, `print("Hello World")`];

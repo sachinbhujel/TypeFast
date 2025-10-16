@@ -42,11 +42,16 @@ function Practice() {
                         <h3>Practice Set 3</h3>
                         <p>Coming soon.</p>
                     </div>
-
-                    <div className="coming-soon-box">
-                        <h3>More Sets</h3>
-                        <p>Coming soon!</p>
-                    </div>
+                    <Link
+                        to="/codingSets"
+                        className="coming-soon-box"
+                        style={{ textDecoration: "none" }}
+                    >
+                        <div>
+                            <h3>Coding Sets</h3>
+                            <p>This set is for coders.</p>
+                        </div>
+                    </Link>
                 </div>
                 <footer className="footer">
                     <div className="footer-content">
