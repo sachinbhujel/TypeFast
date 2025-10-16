@@ -38,6 +38,8 @@ function CodingSets() {
     const handleValue = (e) => {
         if (isFinished) return;
 
+        if (!e.target.value.trim()) return;
+
         const input = e.target.value;
         setWord(input);
 

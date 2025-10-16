@@ -143,8 +143,7 @@ if (userChar == null) {
 function toFahrenheit(celsius) {
     return (celsius * 9) / 5 + 32;
 }
-console.log(toFahrenheit(25));
-`,
+console.log(toFahrenheit(25));`,
 
     `// Create a simple object
 const user = {
@@ -152,56 +151,47 @@ const user = {
     age: 22,
     country: "Nepal"
 };
-console.log(user.name);
-`,
+console.log(user.name);`,
 
     `// Check if a number is positive
 function isPositive(num) {
     return num > 0 ? "Positive" : "Negative";
 }
-console.log(isPositive(-3));
-`,
+console.log(isPositive(-3));`,
 
     `// Find the length of an array
 const fruits = ["apple", "banana", "cherry"];
-console.log(fruits.length);
-`,
+console.log(fruits.length);`,
 
     `// Use map to double numbers
 const nums = [1, 2, 3, 4];
 const doubled = nums.map(n => n * 2);
-console.log(doubled);
-`,
+console.log(doubled);`,
 
     `// Simple while loop
 let count = 0;
 while (count < 5) {
     console.log("Count:", count);
     count++;
-}
-`,
+}`,
 
     `// Function with default parameter
 function sayHello(name = "Guest") {
     console.log("Hello, " + name + "!");
 }
-sayHello();
-`,
+sayHello();`,
 
     `// Template literal example
-    const name = "Sara";
-    const age = 20;
-    console.log("My name is ", name, "and I am ", age, "years old.");
-    `,
+const name = "Sara";
+const age = 20;
+console.log("My name is ", name, "and I am ", age, "years old.");`,
 
     `// Random number between 1 and 10
 const random = Math.floor(Math.random() * 10) + 1;
-console.log(random);
-`,
+console.log(random);`,
 
     `// Filter even numbers from array
 const numbers = [1, 2, 3, 4, 5, 6];
 const even = numbers.filter(n => n % 2 === 0);
-console.log(even);
-`,
+console.log(even);`,
 ];
