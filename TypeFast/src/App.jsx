@@ -98,8 +98,10 @@ function App() {
     //         setIsFinished(true);
     //     }
     // };
-
+ useEffect(() => {
+    
     alert("Our website is currently under maintenance. Thanks for your patience.");
+ }, [])
 
     useEffect(() => {
         let typed = "";
