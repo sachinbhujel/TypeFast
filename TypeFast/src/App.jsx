@@ -205,6 +205,7 @@ function App() {
     };
 
     const handleTyping = () => {
+        alert("Working");
         const input = document.getElementById("hidden-input");
         if (!input) return;
         input.focus();
