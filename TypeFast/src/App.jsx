@@ -221,11 +221,11 @@ function App() {
     //     }, 300);
     // });
 
-    useEffect(() => {
-        alert(
-            "Our website is currently under maintenance. Thanks for your patience."
-        );
-    }, []);
+    // useEffect(() => {
+    //     alert(
+    //         "Our website is currently under maintenance. Thanks for your patience."
+    //     );
+    // }, []);
     return (
         <>
             {sideNavOpen ? (
@@ -389,7 +389,7 @@ function App() {
                             <p
                                 className="typing-text"
                                 style={{ fontFamily: fontName }}
-                                id="typing-div"
+                                id="typing-text"
                             >
                                 {getHighlighted()}
                             </p>
