@@ -46,7 +46,16 @@ export default function Settings({
                 </div>
                 <footer className="footer">
                     <div className="footer-content">
-                        <p>Made with ❤️ by the TypeFast Team</p>
+                        <p>
+                            Made with ❤️ by the{" "}
+                            <a
+                                href="https://github.com/sachinbhujel"
+                                target="_blank"
+                                style={{ color: "black" }}
+                            >
+                                <b>TypeFast Team</b>
+                            </a>
+                        </p>
                     </div>
                 </footer>
             </div>

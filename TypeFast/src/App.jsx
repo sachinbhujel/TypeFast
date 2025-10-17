@@ -438,7 +438,14 @@ function App() {
                         <footer className="footer">
                             <div className="footer-content">
                                 <p>
-                                    Made with ❤️ by the <b>TypeFast Team</b>
+                                    Made with ❤️ by the{" "}
+                                    <a
+                                        href="https://github.com/sachinbhujel"
+                                        target="_blank"
+                                        style={{ color: "black" }}
+                                    >
+                                        <b>TypeFast Team</b>
+                                    </a>
                                 </p>
                             </div>
                         </footer>

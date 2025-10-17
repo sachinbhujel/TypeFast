@@ -10,7 +10,7 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.hr-line{
+.hr-line {
     border-bottom: 1px solid black;
     margin: 0px 20px;
 }
