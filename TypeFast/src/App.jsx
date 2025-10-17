@@ -204,22 +204,26 @@ function App() {
         setIsFinished(false);
     };
 
-    // const handleTyping = () => {
-
-    // }
-
-    window.addEventListener("load", () => {
+    const handleTyping = () => {
         const input = document.getElementById("typing-div");
         if (!input) return;
 
-        // Delay to ensure mobile devices trigger the keyboard
         setTimeout(() => {
             input.focus();
 
-            // Optional: for some mobile browsers, triggering a click helps
             input.click();
         }, 300);
-    });
+    };
+
+    // window.addEventListener("load", () => {
+    //     const input = document.getElementById("typing-div");
+    //     if (!input) return;
+
+    //     setTimeout(() => {
+    //         input.focus();
+    //         input.click();
+    //     }, 300);
+    // });
 
          useEffect(() => {
 
@@ -305,10 +309,7 @@ function App() {
                     setSideNavOpen={setSideNavOpen}
                 />
             ) : (
-                <div
-                    className="app"
-                    id="hs-run-on-click-run-confetti"
-                >
+                <div className="app" id="hs-run-on-click-run-confetti">
                     <div className="navbar">
                         <div className="navbar-left">
                             <svg
@@ -387,14 +388,16 @@ function App() {
                                 );
                             })}
                         </div>
-                        <p
-                            className="typing-text"
-                            style={{ fontFamily: fontName }}
-                            id="typing-div"
-                             contenteditable="true" 
-                        >
-                            {getHighlighted()}
-                        </p>
+                        <label id="typing-div" onClick={handleTyping}>
+                            <p
+                                className="typing-text"
+                                style={{ fontFamily: fontName }}
+                                id="typing-div"
+                            >
+                                {getHighlighted()}
+                            </p>
+                        </label>
+                        <input type="text" hidden />
 
                         {/* <button
                                 className="start-button"
