@@ -105,24 +105,40 @@ body::-webkit-scrollbar {
 }
 
 .typing-text {
-    background-color: #f9fafb;
+    background-color: #f7f7f7;
     padding: 1rem;
     border-radius: 0.5rem;
     border: 1px solid #e5e7eb;
-    color: #111827;
+    color: #171717;
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     margin-top: 16px;
     letter-spacing: 1.1px;
 }
 
+.typing-text::before {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: black;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
 .wrong {
-    background-color: red;
-    color: white;
+    background-color: rgb(220, 0, 0);
+    color: rgb(237, 236, 236);
 }
 
 .correct {
-    background-color: lightgreen;
+    background-color: rgb(61, 237, 61);
+    color: rgb(0, 0, 0);
 }
 
 .code-correct {
