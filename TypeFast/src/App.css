@@ -120,7 +120,7 @@ body::-webkit-scrollbar {
     display: inline-block;
     width: 2px;
     height: 1em;
-    background-color: black;
+    background-color: rgb(255, 149, 0);
     vertical-align: bottom;
     animation: blink 1s step-end infinite;
 }

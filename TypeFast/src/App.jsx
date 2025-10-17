@@ -20,6 +20,7 @@ function App() {
     const [startingText, setStartingText] = useState(() => {
         return Math.floor(Math.random() * 10);
     });
+    const [onMobile, setOnMobile] = useState(window.innerWidth < 769);
 
     const handleMenu = () => {
         setSideNavOpen(true);
@@ -56,112 +57,118 @@ function App() {
         }
     }, [isFinished]);
 
-    // const handleValue = (e) => {
-    //     if (isFinished) return;
+    useEffect(() => {
+        const handleResize = () => {
+            setOnMobile(window.innerWidth < 769);
+        };
 
-    //     // if (!e.target.value.trim()) return;
+        window.addEventListener("resize", handleResize);
 
-    //     const input = e.target.value;
-    //     setWord(input);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
-    //     if (!startTime) {
-    //         setStartTime(Date.now());
-    //     }
+    const handleValue = (e) => {
+        if (isFinished) return;
 
-    //     const targetWords = targetText[startingText].split(" ");
-    //     const slicedTarget = wordLimit
-    //         ? targetWords.slice(0, wordLimit).join(" ")
-    //         : targetText[startingText];
+        // if (!e.target.value.trim()) return;
 
-    //     let correctChar = 0;
-    //     for (let i = 0; i < input.length; i++) {
-    //         if (input[i] === slicedTarget[i]) {
-    //             correctChar++;
-    //         }
-    //     }
+        const input = e.target.value;
+        setWord(input);
 
-    //     const acc = Math.round((correctChar / input.length) * 100) || 0;
-    //     setAccuracy(acc);
+        if (!startTime) {
+            setStartTime(Date.now());
+        }
 
-    //     const now = Date.now();
-    //     const elapsedMs = startTime ? now - startTime : 0;
-    //     const elapsedMinutes = elapsedMs / 1000 / 60;
+        const targetWords = targetText[startingText].split(" ");
+        const slicedTarget = wordLimit
+            ? targetWords.slice(0, wordLimit).join(" ")
+            : targetText[startingText];
 
-    //     const wordsTyped = input.length / 5;
-    //     const currentWpm =
-    //         elapsedMinutes > 0 ? Math.round(wordsTyped / elapsedMinutes) : 0;
-    //     setWpm(currentWpm);
+        let correctChar = 0;
+        for (let i = 0; i < input.length; i++) {
+            if (input[i] === slicedTarget[i]) {
+                correctChar++;
+            }
+        }
 
-    //     if (input.length === slicedTarget.length) {
-    //         const end = Date.now();
-    //         setTimeTaken(((end - startTime) / 1000).toFixed(2));
-    //         setIsFinished(true);
-    //     }
-    // };
+        const acc = Math.round((correctChar / input.length) * 100) || 0;
+        setAccuracy(acc);
 
-    //  useEffect(() => {
+        const now = Date.now();
+        const elapsedMs = startTime ? now - startTime : 0;
+        const elapsedMinutes = elapsedMs / 1000 / 60;
 
-    //     alert("Our website is currently under maintenance. Thanks for your patience.");
-    //  }, [])
+        const wordsTyped = input.length / 5;
+        const currentWpm =
+            elapsedMinutes > 0 ? Math.round(wordsTyped / elapsedMinutes) : 0;
+        setWpm(currentWpm);
+
+        if (input.length === slicedTarget.length) {
+            const end = Date.now();
+            setTimeTaken(((end - startTime) / 1000).toFixed(2));
+            setIsFinished(true);
+        }
+    };
 
     useEffect(() => {
-        let typed = "";
-        const handleKeyDown = (e) => {
-            const key = e.key || e.target.value;
-            if (isFinished) return;
+        if (!onMobile) {
+            let typed = "";
+            const handleKeyDown = (e) => {
+                const key = e.key;
+                if (isFinished) return;
 
-            if (!startTime) {
-                setStartTime(Date.now());
-            }
-
-            if (key.length == 1 || key === "Backspace") {
-                if (key === "Backspace") {
-                    typed = typed.slice(0, -1);
-                } else {
-                    typed += key;
+                if (!startTime) {
+                    setStartTime(Date.now());
                 }
-                setWord(typed);
 
-                const targetWords = targetText[startingText].split(" ");
-                const slicedTarget = wordLimit
-                    ? targetWords.slice(0, wordLimit).join(" ")
-                    : targetText[startingText];
+                if (key.length == 1 || key === "Backspace") {
+                    if (key === "Backspace") {
+                        typed = typed.slice(0, -1);
+                    } else {
+                        typed += key;
+                    }
+                    setWord(typed);
 
-                let correctChar = 0;
-                for (let i = 0; i < typed.length; i++) {
-                    if (typed[i] === slicedTarget[i]) {
-                        correctChar++;
+                    const targetWords = targetText[startingText].split(" ");
+                    const slicedTarget = wordLimit
+                        ? targetWords.slice(0, wordLimit).join(" ")
+                        : targetText[startingText];
+
+                    let correctChar = 0;
+                    for (let i = 0; i < typed.length; i++) {
+                        if (typed[i] === slicedTarget[i]) {
+                            correctChar++;
+                        }
+                    }
+                    const acc =
+                        Math.round((correctChar / typed.length) * 100) || 0;
+                    setAccuracy(acc);
+
+                    const now = Date.now();
+                    const elapsedMs = startTime ? now - startTime : 0;
+                    const elapsedMinutes = elapsedMs / 1000 / 60;
+
+                    const wordsTyped = typed.length / 5;
+                    const currentWpm =
+                        elapsedMinutes > 0
+                            ? Math.round(wordsTyped / elapsedMinutes)
+                            : 0;
+                    setWpm(currentWpm);
+
+                    if (typed.length === slicedTarget.length) {
+                        const end = Date.now();
+                        setTimeTaken(((end - startTime) / 1000).toFixed(2));
+                        setIsFinished(true);
                     }
                 }
-                const acc = Math.round((correctChar / typed.length) * 100) || 0;
-                setAccuracy(acc);
+            };
 
-                const now = Date.now();
-                const elapsedMs = startTime ? now - startTime : 0;
-                const elapsedMinutes = elapsedMs / 1000 / 60;
-
-                const wordsTyped = typed.length / 5;
-                const currentWpm =
-                    elapsedMinutes > 0
-                        ? Math.round(wordsTyped / elapsedMinutes)
-                        : 0;
-                setWpm(currentWpm);
-
-                if (typed.length === slicedTarget.length) {
-                    const end = Date.now();
-                    setTimeTaken(((end - startTime) / 1000).toFixed(2));
-                    setIsFinished(true);
-                }
-            }
-        };
-
-        document.addEventListener("keydown", handleKeyDown);
-        document.addEventListener("input", handleKeyDown);
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-            document.removeEventListener("input", handleKeyDown);
-        };
-    }, [isFinished, startTime, startingText, wordLimit]);
+            document.addEventListener("keydown", handleKeyDown);
+            return () => {
+                document.removeEventListener("keydown", handleKeyDown);
+            };
+        }
+    }, [isFinished, startTime, startingText, wordLimit, onMobile]);
 
     const getHighlighted = () => {
         const targetWords = targetText[startingText].split(" ");
@@ -173,9 +180,17 @@ function App() {
         const targetChars = slicedText.split("");
         return targetChars.map((char, index) => {
             const userChar = inputChars[index];
+            const isLastTypedChar = index === inputChars.length - 1;
 
             if (userChar == null) {
-                return <span key={index}>{char}</span>;
+                return (
+                    <span key={index}>
+                        {char}
+                        {index === 0 && inputChars.length === 0 && (
+                            <span className="blinking-cursor"></span>
+                        )}
+                    </span>
+                );
             }
 
             const isCorrect = userChar === char;
@@ -183,6 +198,10 @@ function App() {
             return (
                 <span key={index} className={isCorrect ? "correct" : "wrong"}>
                     {char}
+
+                    {isLastTypedChar && (
+                        <span className="blinking-cursor"></span>
+                    )}
                 </span>
             );
         });
@@ -208,28 +227,6 @@ function App() {
         setIsFinished(false);
     };
 
-    const handleTyping = () => {
-        const input = document.getElementById("hidden-input");
-        if (!input) return;
-
-        input.focus();
-    };
-
-    // window.addEventListener("load", () => {
-    //     const input = document.getElementById("typing-div");
-    //     if (!input) return;
-
-    //     setTimeout(() => {
-    //         input.focus();
-    //         input.click();
-    //     }, 300);
-    // });
-
-    useEffect(() => {
-        alert(
-            "Our website is currently under maintenance. Thanks for your patience."
-        );
-    }, []);
     return (
         <>
             {sideNavOpen ? (
@@ -389,43 +386,24 @@ function App() {
                                 );
                             })}
                         </div>
-                        <label id="typing-label" onClick={handleTyping}>
-                            <p
-                                className="typing-text"
-                                style={{ fontFamily: fontName }}
-                                id="typing-text"
-                            >
-                                {getHighlighted()}
-                            </p>
-                        </label>
-                        <input
-                            id="hidden-input"
-                            type="text"
-                            style={{
-                                opacity: 0,
-                                position: "absolute",
-                                left: 0,
-                                top: 0,
-                                width: "1px",
-                                height: "1px",
-                            }}
-                        />
+                        <p
+                            className="typing-text"
+                            style={{ fontFamily: fontName }}
+                            id="typing-text"
+                        >
+                            {getHighlighted()}
+                        </p>
 
-                        {/* <button
-                                className="start-button"
-                                onClick={handleTyping}
-                            >
-                                Start typing
-                            </button> */}
-
-                        {/* <textarea
-                            className="typing-input"
-                            placeholder="Start typing here..."
-                            value={word}
-                            onChange={handleValue}
-                            disabled={isFinished}
-                            onPaste={(e) => e.preventDefault()}
-                        ></textarea> */}
+                        {onMobile && (
+                            <textarea
+                                className="typing-input"
+                                placeholder="Start typing here..."
+                                value={word}
+                                onChange={handleValue}
+                                disabled={isFinished}
+                                onPaste={(e) => e.preventDefault()}
+                            ></textarea>
+                        )}
 
                         <div className="typing-stats">
                             <div className="stat-box">

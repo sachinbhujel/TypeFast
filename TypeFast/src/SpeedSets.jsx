@@ -97,7 +97,12 @@ function SpeedSets() {
             const isCorrect = userChar === char;
 
             return (
-                <span key={index} className={`showing-words${isCorrect ? "correct" : "wrong"}`}>
+                <span
+                    key={index}
+                    className={`showing-words${
+                        isCorrect ? "correct" : "wrong"
+                    }`}
+                >
                     {char}
                 </span>
             );
