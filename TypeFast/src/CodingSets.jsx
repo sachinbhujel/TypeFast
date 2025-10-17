@@ -82,19 +82,26 @@ function CodingSets() {
         const targetChars = slicedText.split("");
         return targetChars.map((char, index) => {
             const userChar = inputChars[index];
+            const isLastTypedChar = index === inputChars.length - 1;
 
             if (userChar == null) {
-                return <span key={index}>{char}</span>;
+                return (
+                    <span key={index}>
+                        {char}
+                        {index === 0 && inputChars.length === 0 && (
+                            <span className="blinking-cursor"></span>
+                        )}
+                    </span>
+                );
             }
-
             const isCorrect = userChar === char;
-
             return (
-                <span
-                    key={index}
-                    className={isCorrect ? "code-correct" : "wrong"}
-                >
+                <span key={index} className={isCorrect ? "correct" : "wrong"}>
                     {char}
+
+                    {isLastTypedChar && (
+                        <span className="blinking-cursor"></span>
+                    )}
                 </span>
             );
         });
