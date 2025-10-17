@@ -98,10 +98,11 @@ function App() {
     //         setIsFinished(true);
     //     }
     // };
- useEffect(() => {
-    
-    alert("Our website is currently under maintenance. Thanks for your patience.");
- }, [])
+
+    //  useEffect(() => {
+
+    //     alert("Our website is currently under maintenance. Thanks for your patience.");
+    //  }, [])
 
     useEffect(() => {
         let typed = "";
@@ -210,9 +211,20 @@ function App() {
     window.addEventListener("load", () => {
         const input = document.getElementById("hs-run-on-click-run-confetti");
         if (!input) return;
-        setTimeout(() => input.focus(), 100);
+
+        // Delay to ensure mobile devices trigger the keyboard
+        setTimeout(() => {
+            input.focus();
+
+            // Optional: for some mobile browsers, triggering a click helps
+            input.click();
+        }, 300);
     });
 
+         useEffect(() => {
+
+        alert("Our website is currently under maintenance. Thanks for your patience.");
+     }, [])
     return (
         <>
             {sideNavOpen ? (
