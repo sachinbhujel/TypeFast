@@ -107,7 +107,7 @@ function App() {
     useEffect(() => {
         let typed = "";
         const handleKeyDown = (e) => {
-            const key = e.key;
+            const key = e.key || e.target.value;
             if (isFinished) return;
 
             if (!startTime) {
@@ -225,11 +225,11 @@ function App() {
     //     }, 300);
     // });
 
-    // useEffect(() => {
-    //     alert(
-    //         "Our website is currently under maintenance. Thanks for your patience."
-    //     );
-    // }, []);
+    useEffect(() => {
+        alert(
+            "Our website is currently under maintenance. Thanks for your patience."
+        );
+    }, []);
     return (
         <>
             {sideNavOpen ? (
