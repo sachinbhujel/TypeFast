@@ -99,6 +99,8 @@ function App() {
     //     }
     // };
 
+    alert("Our website is currently under maintenance. Thanks for your patience.");
+
     useEffect(() => {
         let typed = "";
         const handleKeyDown = (e) => {
