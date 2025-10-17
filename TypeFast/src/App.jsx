@@ -212,6 +212,7 @@ function App() {
             input.focus();
         }, 0);
     };
+
     // window.addEventListener("load", () => {
     //     const input = document.getElementById("typing-div");
     //     if (!input) return;
@@ -222,11 +223,11 @@ function App() {
     //     }, 300);
     // });
 
-    useEffect(() => {
-        alert(
-            "Our website is currently under maintenance. Thanks for your patience."
-        );
-    }, []);
+    // useEffect(() => {
+    //     alert(
+    //         "Our website is currently under maintenance. Thanks for your patience."
+    //     );
+    // }, []);
     return (
         <>
             {sideNavOpen ? (
