@@ -207,12 +207,8 @@ function App() {
     const handleTyping = () => {
         const input = document.getElementById("typing-div");
         if (!input) return;
-
-        setTimeout(() => {
-            input.focus();
-
-            input.click();
-        }, 300);
+        input.focus();
+        input.click();
     };
 
     // window.addEventListener("load", () => {
