@@ -225,10 +225,11 @@ function App() {
     //     }, 300);
     // });
 
-         useEffect(() => {
-
-        alert("Our website is currently under maintenance. Thanks for your patience.");
-     }, [])
+    // useEffect(() => {
+    //     alert(
+    //         "Our website is currently under maintenance. Thanks for your patience."
+    //     );
+    // }, []);
     return (
         <>
             {sideNavOpen ? (
@@ -397,7 +398,7 @@ function App() {
                                 {getHighlighted()}
                             </p>
                         </label>
-                        <input type="text" hidden />
+                        <input id="typing-div" type="text" hidden />
 
                         {/* <button
                                 className="start-button"

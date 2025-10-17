@@ -105,15 +105,17 @@ body::-webkit-scrollbar {
 }
 
 .typing-text {
-    background-color: #f7f7f7;
+    background-color: #0f0f0f;
     padding: 1rem;
     border-radius: 0.5rem;
     border: 1px solid #e5e7eb;
-    color: #171717;
+    color: #f8f8f8;
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     margin-top: 16px;
     letter-spacing: 1.1px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .blinking-cursor {
