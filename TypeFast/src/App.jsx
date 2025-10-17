@@ -222,11 +222,11 @@ function App() {
     //     }, 300);
     // });
 
-    // useEffect(() => {
-    //     alert(
-    //         "Our website is currently under maintenance. Thanks for your patience."
-    //     );
-    // }, []);
+    useEffect(() => {
+        alert(
+            "Our website is currently under maintenance. Thanks for your patience."
+        );
+    }, []);
     return (
         <>
             {sideNavOpen ? (
@@ -395,7 +395,15 @@ function App() {
                                 {getHighlighted()}
                             </p>
                         </label>
-                        <input id="hidden-input" type="text" hidden />
+                        <input
+                            id="hidden-input"
+                            type="text"
+                            style={{
+                                opacity: 0,
+                                position: "absolute",
+                                pointerEvents: "none",
+                            }}
+                        />
 
                         {/* <button
                                 className="start-button"
