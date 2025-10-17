@@ -89,9 +89,17 @@ function SpeedSets() {
         const targetChars = slicedText.split("");
         return targetChars.map((char, index) => {
             const userChar = inputChars[index];
+            const isLastTypedChar = index === inputChars.length - 1;
 
             if (userChar == null) {
-                return <span key={index}>{char}</span>;
+                return (
+                    <span key={index}>
+                        {char}
+                        {index === 0 && inputChars.length === 0 && (
+                            <span className="blinking-cursor"></span>
+                        )}
+                    </span>
+                );
             }
 
             const isCorrect = userChar === char;
@@ -99,11 +107,14 @@ function SpeedSets() {
             return (
                 <span
                     key={index}
-                    className={`showing-words${
+                    className={`showing-words ${
                         isCorrect ? "correct" : "wrong"
                     }`}
                 >
                     {char}
+                    {isLastTypedChar && (
+                        <span className="blinking-cursor"></span>
+                    )}
                 </span>
             );
         });
