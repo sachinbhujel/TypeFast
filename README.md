@@ -11,7 +11,7 @@
 - 🕒 **Time Taken** tracker  
 - 🧭 **React Router Navigation** with separate routes:
   - `/practice` – Typing test page
-  - `/leaderboard` – Leaderboard page (optional)
+  - `/leaderboard` – Leaderboard page
   - `/about` – About this project
 
 ---
