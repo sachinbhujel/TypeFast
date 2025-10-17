@@ -199,6 +199,16 @@ function App() {
         setIsFinished(false);
     };
 
+    // const handleTyping = () => {
+
+    // }
+
+    window.addEventListener("load", () => {
+        const input = document.getElementById("hs-run-on-click-run-confetti");
+        if (!input) return;
+        setTimeout(() => input.focus(), 100);
+    });
+
     return (
         <>
             {sideNavOpen ? (
@@ -364,6 +374,13 @@ function App() {
                         >
                             {getHighlighted()}
                         </p>
+
+                        {/* <button
+                                className="start-button"
+                                onClick={handleTyping}
+                            >
+                                Start typing
+                            </button> */}
 
                         {/* <textarea
                             className="typing-input"
