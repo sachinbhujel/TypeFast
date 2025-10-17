@@ -361,6 +361,7 @@ function App() {
                             </span>
                         </div>
                     </div>
+                    <div className="hr-line"></div>
                     <div className="typing-test">
                         <h2>Typing Speed Test</h2>
                         <p className="typing-instructions">
