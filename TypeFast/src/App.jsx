@@ -209,7 +209,7 @@ function App() {
     // }
 
     window.addEventListener("load", () => {
-        const input = document.getElementById("hs-run-on-click-run-confetti");
+        const input = document.getElementById("typing-div");
         if (!input) return;
 
         // Delay to ensure mobile devices trigger the keyboard
@@ -305,7 +305,10 @@ function App() {
                     setSideNavOpen={setSideNavOpen}
                 />
             ) : (
-                <div className="app" id="hs-run-on-click-run-confetti">
+                <div
+                    className="app"
+                    id="hs-run-on-click-run-confetti"
+                >
                     <div className="navbar">
                         <div className="navbar-left">
                             <svg
@@ -387,6 +390,8 @@ function App() {
                         <p
                             className="typing-text"
                             style={{ fontFamily: fontName }}
+                            id="typing-div"
+                             contenteditable="true" 
                         >
                             {getHighlighted()}
                         </p>
