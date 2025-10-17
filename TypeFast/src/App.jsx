@@ -156,7 +156,11 @@ function App() {
         };
 
         document.addEventListener("keydown", handleKeyDown);
-        return () => document.removeEventListener("keydown", handleKeyDown);
+        document.addEventListener("input", handleKeyDown);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("input", handleKeyDown);
+        };
     }, [isFinished, startTime, startingText, wordLimit]);
 
     const getHighlighted = () => {
@@ -208,9 +212,7 @@ function App() {
         const input = document.getElementById("hidden-input");
         if (!input) return;
 
-        setTimeout(() => {
-            input.focus();
-        }, 0);
+        input.focus();
     };
 
     // window.addEventListener("load", () => {
