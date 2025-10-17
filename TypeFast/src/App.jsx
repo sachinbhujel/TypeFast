@@ -205,13 +205,13 @@ function App() {
     };
 
     const handleTyping = () => {
-        alert("Working");
         const input = document.getElementById("hidden-input");
         if (!input) return;
-        input.focus();
-        input.click();
-    };
 
+        setTimeout(() => {
+            input.focus();
+        }, 0);
+    };
     // window.addEventListener("load", () => {
     //     const input = document.getElementById("typing-div");
     //     if (!input) return;
@@ -401,7 +401,10 @@ function App() {
                             style={{
                                 opacity: 0,
                                 position: "absolute",
-                                pointerEvents: "none",
+                                left: 0,
+                                top: 0,
+                                width: "1px",
+                                height: "1px",
                             }}
                         />
 
