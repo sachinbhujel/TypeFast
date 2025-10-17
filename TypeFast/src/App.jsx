@@ -205,7 +205,7 @@ function App() {
     };
 
     const handleTyping = () => {
-        const input = document.getElementById("typing-div");
+        const input = document.getElementById("hidden-input");
         if (!input) return;
         input.focus();
         input.click();
@@ -385,7 +385,7 @@ function App() {
                                 );
                             })}
                         </div>
-                        <label id="typing-div" onClick={handleTyping}>
+                        <label id="typing-label" onClick={handleTyping}>
                             <p
                                 className="typing-text"
                                 style={{ fontFamily: fontName }}
@@ -394,7 +394,7 @@ function App() {
                                 {getHighlighted()}
                             </p>
                         </label>
-                        <input id="typing-div" type="text" hidden />
+                        <input id="hidden-input" type="text" hidden />
 
                         {/* <button
                                 className="start-button"
